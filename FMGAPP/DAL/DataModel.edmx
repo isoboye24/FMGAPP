@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FMGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EXPENDITURE">
+          <Key>
+            <PropertyRef Name="expenditureID" />
+          </Key>
+          <Property Name="expenditureID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="amountSpent" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="summary" Type="text" Nullable="false" />
+          <Property Name="day" Type="int" Nullable="false" />
+          <Property Name="monthID" Type="int" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+          <Property Name="deletedDate" Type="date" />
+          <Property Name="expenditureTitleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EXPENDITURE_TITLE">
+          <Key>
+            <PropertyRef Name="expenditureTitleID" />
+          </Key>
+          <Property Name="expenditureTitleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="expenditureTitle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+          <Property Name="deletedDate" Type="date" />
+        </EntityType>
+        <EntityType Name="FINANCIAL_REPORT">
+          <Key>
+            <PropertyRef Name="financialReportID" />
+          </Key>
+          <Property Name="financialReportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="totalOfferings" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="totalExpenditures" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="summary" Type="text" />
+          <Property Name="monthID" Type="int" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+          <Property Name="deletedDate" Type="date" />
+        </EntityType>
+        <EntityType Name="IMAGE_DOCUMENT">
+          <Key>
+            <PropertyRef Name="documentImageID" />
+          </Key>
+          <Property Name="documentImageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imagePath" Type="varchar(max)" Nullable="false" />
+          <Property Name="imageCaption" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="summary" Type="text" />
+          <Property Name="day" Type="int" Nullable="false" />
+          <Property Name="monthID" Type="int" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+          <Property Name="deletedDate" Type="date" />
+        </EntityType>
+        <EntityType Name="LOGIN">
+          <Key>
+            <PropertyRef Name="loginID" />
+          </Key>
+          <Property Name="loginID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MONTH">
+          <Key>
+            <PropertyRef Name="monthID" />
+          </Key>
+          <Property Name="monthID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="monthName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OFFERING">
+          <Key>
+            <PropertyRef Name="offeringID" />
+          </Key>
+          <Property Name="offeringID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="offerings" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="summary" Type="text" />
+          <Property Name="day" Type="int" Nullable="false" />
+          <Property Name="monthID" Type="int" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+          <Property Name="deletedDate" Type="date" />
+        </EntityType>
+        <EntityType Name="TEXT_DOCUMENT">
+          <Key>
+            <PropertyRef Name="documentTextID" />
+          </Key>
+          <Property Name="documentTextID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="documentName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="documentType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="documentPath" Type="varchar(max)" Nullable="false" />
+          <Property Name="day" Type="int" Nullable="false" />
+          <Property Name="monthID" Type="int" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+          <Property Name="deletedDate" Type="date" />
+        </EntityType>
+        <EntityContainer Name="FMGModelStoreContainer">
+          <EntitySet Name="EXPENDITURE" EntityType="Self.EXPENDITURE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EXPENDITURE_TITLE" EntityType="Self.EXPENDITURE_TITLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FINANCIAL_REPORT" EntityType="Self.FINANCIAL_REPORT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IMAGE_DOCUMENT" EntityType="Self.IMAGE_DOCUMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOGIN" EntityType="Self.LOGIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MONTH" EntityType="Self.MONTH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OFFERING" EntityType="Self.OFFERING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TEXT_DOCUMENT" EntityType="Self.TEXT_DOCUMENT" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FMGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EXPENDITURE">
+          <Key>
+            <PropertyRef Name="expenditureID" />
+          </Key>
+          <Property Name="expenditureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="amountSpent" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="day" Type="Int32" Nullable="false" />
+          <Property Name="monthID" Type="Int32" Nullable="false" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="deletedDate" Type="DateTime" Precision="0" />
+          <Property Name="expenditureTitleID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EXPENDITURE_TITLE">
+          <Key>
+            <PropertyRef Name="expenditureTitleID" />
+          </Key>
+          <Property Name="expenditureTitleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="expenditureTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="deletedDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="FINANCIAL_REPORT">
+          <Key>
+            <PropertyRef Name="financialReportID" />
+          </Key>
+          <Property Name="financialReportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="totalOfferings" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="totalExpenditures" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="monthID" Type="Int32" Nullable="false" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="deletedDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="IMAGE_DOCUMENT">
+          <Key>
+            <PropertyRef Name="documentImageID" />
+          </Key>
+          <Property Name="documentImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="imageCaption" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="day" Type="Int32" Nullable="false" />
+          <Property Name="monthID" Type="Int32" Nullable="false" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="deletedDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="LOGIN">
+          <Key>
+            <PropertyRef Name="loginID" />
+          </Key>
+          <Property Name="loginID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MONTH">
+          <Key>
+            <PropertyRef Name="monthID" />
+          </Key>
+          <Property Name="monthID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="monthName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OFFERING">
+          <Key>
+            <PropertyRef Name="offeringID" />
+          </Key>
+          <Property Name="offeringID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="offerings" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="day" Type="Int32" Nullable="false" />
+          <Property Name="monthID" Type="Int32" Nullable="false" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="deletedDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="TEXT_DOCUMENT">
+          <Key>
+            <PropertyRef Name="documentTextID" />
+          </Key>
+          <Property Name="documentTextID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="documentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="documentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="documentPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="day" Type="Int32" Nullable="false" />
+          <Property Name="monthID" Type="Int32" Nullable="false" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="deletedDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="FMGEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EXPENDITUREs" EntityType="Self.EXPENDITURE" />
+          <EntitySet Name="EXPENDITURE_TITLE" EntityType="Self.EXPENDITURE_TITLE" />
+          <EntitySet Name="FINANCIAL_REPORT" EntityType="Self.FINANCIAL_REPORT" />
+          <EntitySet Name="IMAGE_DOCUMENT" EntityType="Self.IMAGE_DOCUMENT" />
+          <EntitySet Name="LOGINs" EntityType="Self.LOGIN" />
+          <EntitySet Name="MONTHs" EntityType="Self.MONTH" />
+          <EntitySet Name="OFFERINGs" EntityType="Self.OFFERING" />
+          <EntitySet Name="TEXT_DOCUMENT" EntityType="Self.TEXT_DOCUMENT" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FMGModelStoreContainer" CdmEntityContainer="FMGEntities">
+          <EntitySetMapping Name="EXPENDITUREs">
+            <EntityTypeMapping TypeName="FMGModel.EXPENDITURE">
+              <MappingFragment StoreEntitySet="EXPENDITURE">
+                <ScalarProperty Name="expenditureID" ColumnName="expenditureID" />
+                <ScalarProperty Name="amountSpent" ColumnName="amountSpent" />
+                <ScalarProperty Name="summary" ColumnName="summary" />
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="monthID" ColumnName="monthID" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+                <ScalarProperty Name="expenditureTitleID" ColumnName="expenditureTitleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EXPENDITURE_TITLE">
+            <EntityTypeMapping TypeName="FMGModel.EXPENDITURE_TITLE">
+              <MappingFragment StoreEntitySet="EXPENDITURE_TITLE">
+                <ScalarProperty Name="expenditureTitleID" ColumnName="expenditureTitleID" />
+                <ScalarProperty Name="expenditureTitle" ColumnName="expenditureTitle" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FINANCIAL_REPORT">
+            <EntityTypeMapping TypeName="FMGModel.FINANCIAL_REPORT">
+              <MappingFragment StoreEntitySet="FINANCIAL_REPORT">
+                <ScalarProperty Name="financialReportID" ColumnName="financialReportID" />
+                <ScalarProperty Name="totalOfferings" ColumnName="totalOfferings" />
+                <ScalarProperty Name="totalExpenditures" ColumnName="totalExpenditures" />
+                <ScalarProperty Name="summary" ColumnName="summary" />
+                <ScalarProperty Name="monthID" ColumnName="monthID" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMAGE_DOCUMENT">
+            <EntityTypeMapping TypeName="FMGModel.IMAGE_DOCUMENT">
+              <MappingFragment StoreEntitySet="IMAGE_DOCUMENT">
+                <ScalarProperty Name="documentImageID" ColumnName="documentImageID" />
+                <ScalarProperty Name="imagePath" ColumnName="imagePath" />
+                <ScalarProperty Name="imageCaption" ColumnName="imageCaption" />
+                <ScalarProperty Name="summary" ColumnName="summary" />
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="monthID" ColumnName="monthID" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOGINs">
+            <EntityTypeMapping TypeName="FMGModel.LOGIN">
+              <MappingFragment StoreEntitySet="LOGIN">
+                <ScalarProperty Name="loginID" ColumnName="loginID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MONTHs">
+            <EntityTypeMapping TypeName="FMGModel.MONTH">
+              <MappingFragment StoreEntitySet="MONTH">
+                <ScalarProperty Name="monthID" ColumnName="monthID" />
+                <ScalarProperty Name="monthName" ColumnName="monthName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OFFERINGs">
+            <EntityTypeMapping TypeName="FMGModel.OFFERING">
+              <MappingFragment StoreEntitySet="OFFERING">
+                <ScalarProperty Name="offeringID" ColumnName="offeringID" />
+                <ScalarProperty Name="offerings" ColumnName="offerings" />
+                <ScalarProperty Name="summary" ColumnName="summary" />
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="monthID" ColumnName="monthID" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEXT_DOCUMENT">
+            <EntityTypeMapping TypeName="FMGModel.TEXT_DOCUMENT">
+              <MappingFragment StoreEntitySet="TEXT_DOCUMENT">
+                <ScalarProperty Name="documentTextID" ColumnName="documentTextID" />
+                <ScalarProperty Name="documentName" ColumnName="documentName" />
+                <ScalarProperty Name="documentType" ColumnName="documentType" />
+                <ScalarProperty Name="documentPath" ColumnName="documentPath" />
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="monthID" ColumnName="monthID" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
