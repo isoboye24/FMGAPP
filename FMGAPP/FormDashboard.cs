@@ -21,7 +21,9 @@ namespace FMGAPP
         public FormDashboard()
         {
             InitializeComponent();
-            CustomizieDropdowns();
+            CustomizieDropdowns(panelExpenditure);
+            CustomizieDropdowns(panelExpenditure);
+            CustomizieDropdowns(panelFinancialReport);
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(5, 40);
             panelSidebar.Controls.Add(leftBorderBtn);
@@ -30,22 +32,23 @@ namespace FMGAPP
             this.ControlBox = false;
             this.DoubleBuffered = true;
         }
-        private void CustomizieDropdowns()
+        private void CustomizieDropdowns(Panel pan)
         {
-            panelDocumentDropdown.Visible = false;
+            pan.Visible = false;
         }
-        private void HideSubmenu()
+        private void HideSubmenu(Panel pan)
         {
-            if (panelDocumentDropdown.Visible == true) 
+            if (pan.Visible == true) 
             { 
-                panelDocumentDropdown.Visible = false; 
+                pan.Visible = false; 
             }
         }
         private void ShowSubmenu(Panel subMenu)
         {
             if (subMenu.Visible == false) 
             { 
-                HideSubmenu(); subMenu.Visible = true; 
+                HideSubmenu(subMenu); 
+                subMenu.Visible = true; 
             } 
             else 
             { 
@@ -103,6 +106,17 @@ namespace FMGAPP
             DisableButton();
             leftBorderBtn.Visible = false;
             labelTitleChildForm.Text = "Dashboard";
+        }
+        private void FormDashboard_Load(object sender, EventArgs e)
+        {
+            this.ControlBox = false;
+            panelExpenditure.Visible = false;
+            ButtonLocation(btnFinancialReports, 1, 219);
+            PanelLocation(panelFinancialReport, 1, 260);
+            panelFinancialReport.Visible = false;
+            ButtonLocation(btnDocuments, 1, 264);
+            PanelLocation(panelDocumentDropdown, 1, 303);
+            panelDocumentDropdown.Visible = false;
         }
         private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
         {
@@ -169,41 +183,132 @@ namespace FMGAPP
             buttonWasClicked = true;
             ActivateButton(sender, RBGColors.activeBtnTextColor, RBGColors.normal);
             OpenChildForm(new FormOfferingList());
-            HideSubmenu();
+            HideSubmenu(panelExpenditure);
+            HideSubmenu(panelFinancialReport);
+            HideSubmenu(panelDocumentDropdown);
+        }
+        
+        private void btnExpenses_Click(object sender, EventArgs e)
+        {
+            ShowSubmenu(panelExpenditure);
+            ActivateButton(sender, RBGColors.activeBtnTextColor, RBGColors.normal);
+            HideSubmenu(panelFinancialReport);
+            HideSubmenu(panelDocumentDropdown);
+            if (panelExpenditure.Visible == false)
+            {
+                ExpensesClosed();
+            }
+            else
+            {
+                ExpensesOpened();
+            }
         }
 
         private void btnExpenditure_Click(object sender, EventArgs e)
         {
             buttonWasClicked = true;
-            ActivateButton(sender, RBGColors.activeBtnTextColor, RBGColors.normal);
             OpenChildForm(new FormExpenditureList());
-            HideSubmenu();
+            HideSubmenu(panelExpenditure);
+            if (panelExpenditure.Visible == false)
+            {
+                ExpensesClosed();
+            }
+            else
+            {
+                ExpensesOpened();
+            }
         }
-
-        private void btnFinancialReport_Click(object sender, EventArgs e)
+        private void btnExpenditureTitle_Click(object sender, EventArgs e)
         {
             buttonWasClicked = true;
+            OpenChildForm(new FormExpenditureTitleList());
+            HideSubmenu(panelExpenditure);
+            if (panelExpenditure.Visible == false)
+            {
+                ExpensesClosed();
+            }
+            else
+            {
+                ExpensesOpened();
+            }
+        }
+
+        private void btnFinancialReports_Click(object sender, EventArgs e)
+        {
+            ShowSubmenu(panelFinancialReport);
             ActivateButton(sender, RBGColors.activeBtnTextColor, RBGColors.normal);
+            HideSubmenu(panelExpenditure);
+            HideSubmenu(panelDocumentDropdown);
+            if (panelFinancialReport.Visible == false)
+            {
+                FRClosed();
+            }
+            else
+            {
+                FROpened();
+            }
+        }
+        private void btnMonthlyReport_Click(object sender, EventArgs e)
+        {
+            buttonWasClicked = true;            
             OpenChildForm(new FormFinancialReportList());
-            HideSubmenu();
+            HideSubmenu(panelFinancialReport);
+            if (panelFinancialReport.Visible == false)
+            {
+                FRClosed();
+            }
+            else
+            {
+                FROpened();
+            }
+        }
+        private void btnYearlyReport_Click(object sender, EventArgs e)
+        {
+            buttonWasClicked = true;            
+            OpenChildForm(new FormViewYearlyReport());
+            HideSubmenu(panelFinancialReport);
+            if (panelFinancialReport.Visible == false)
+            {
+                FRClosed();
+            }
+            else
+            {
+                FROpened();
+            }
+        }
+        private void btnTotalBalance_Click(object sender, EventArgs e)
+        {
+            buttonWasClicked = true;            
+            OpenChildForm(new FormViewTotalBalance());
+            HideSubmenu(panelFinancialReport);
+            if (panelFinancialReport.Visible == false)
+            {
+                FRClosed();
+            }
+            else
+            {
+                FROpened();
+            }
         }
         private void btnDocuments_Click(object sender, EventArgs e)
         {
             ShowSubmenu(panelDocumentDropdown);
             ActivateButton(sender, RBGColors.activeBtnTextColor, RBGColors.normal);
+            HideSubmenu(panelExpenditure);
+            HideSubmenu(panelFinancialReport);            
         }
         private void btnImageDocument_Click(object sender, EventArgs e)
         {
             buttonWasClicked = true;
             OpenChildForm(new FormDocumentImageList());
-            HideSubmenu();
+            HideSubmenu(panelDocumentDropdown);
         }
 
         private void btnOtherDocuments_Click(object sender, EventArgs e)
         {
             buttonWasClicked = true;
             OpenChildForm(new FormDocumentOtherList());
-            HideSubmenu();
+            HideSubmenu(panelDocumentDropdown);
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -212,10 +317,37 @@ namespace FMGAPP
             this.Hide();
             open.ShowDialog();
         }
-
-        private void FormDashboard_Load(object sender, EventArgs e)
+        private void ButtonLocation(Button btn, int x, int y)
         {
-            this.ControlBox = false;
+            btn.Location = new Point(x, y);
+        }
+        private void PanelLocation(Panel pan, int x, int y)
+        {
+            pan.Location = new Point(x, y);
+        }
+        private void ExpensesOpened()
+        {
+            ButtonLocation(btnFinancialReports, 1, 314);
+            PanelLocation(panelFinancialReport, 1, 355);
+            ButtonLocation(btnDocuments, 1, 360);
+            PanelLocation(panelDocumentDropdown, 1, 400);
+        }
+        private void ExpensesClosed()
+        {
+            ButtonLocation(btnFinancialReports, 1, 219);
+            PanelLocation(panelFinancialReport, 1, 260);
+            ButtonLocation(btnDocuments, 1, 264);
+            PanelLocation(panelDocumentDropdown, 1, 303);
+        }
+        private void FROpened()
+        {
+            ButtonLocation(btnDocuments, 1, 409);
+            PanelLocation(panelDocumentDropdown, 1, 448);
+        }
+        private void FRClosed()
+        {
+            ButtonLocation(btnDocuments, 1, 264);
+            PanelLocation(panelDocumentDropdown, 1, 303);
         }
     }
 }

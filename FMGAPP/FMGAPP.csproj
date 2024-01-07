@@ -110,11 +110,17 @@
     <Compile Include="AllForms\FormExpenditureTitleList.Designer.cs">
       <DependentUpon>FormExpenditureTitleList.cs</DependentUpon>
     </Compile>
-    <Compile Include="AllForms\FormFinancialReport.cs">
+    <Compile Include="AllForms\FormViewTotalBalance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AllForms\FormFinancialReport.Designer.cs">
-      <DependentUpon>FormFinancialReport.cs</DependentUpon>
+    <Compile Include="AllForms\FormViewTotalBalance.Designer.cs">
+      <DependentUpon>FormViewTotalBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AllForms\FormViewMonthlyReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllForms\FormViewMonthlyReport.Designer.cs">
+      <DependentUpon>FormViewMonthlyReport.cs</DependentUpon>
     </Compile>
     <Compile Include="AllForms\FormFinancialReportList.cs">
       <SubType>Form</SubType>
@@ -140,15 +146,41 @@
     <Compile Include="AllForms\FormOfferingList.Designer.cs">
       <DependentUpon>FormOfferingList.cs</DependentUpon>
     </Compile>
+    <Compile Include="AllForms\FormViewExpenditure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllForms\FormViewExpenditure.Designer.cs">
+      <DependentUpon>FormViewExpenditure.cs</DependentUpon>
+    </Compile>
     <Compile Include="AllForms\FormViewFinancialTotalBalance.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AllForms\FormViewFinancialTotalBalance.Designer.cs">
       <DependentUpon>FormViewFinancialTotalBalance.cs</DependentUpon>
     </Compile>
+    <Compile Include="AllForms\FormViewYearlyReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllForms\FormViewYearlyReport.Designer.cs">
+      <DependentUpon>FormViewYearlyReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AllForms\FormViewYearlyReportList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllForms\FormViewYearlyReportList.Designer.cs">
+      <DependentUpon>FormViewYearlyReportList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\ExpenditureBLL.cs" />
+    <Compile Include="BLL\ExpenditureTitleBLL.cs" />
     <Compile Include="BLL\IBLL.cs" />
+    <Compile Include="BLL\MonthBLL.cs" />
+    <Compile Include="BLL\OfferingBLL.cs" />
+    <Compile Include="DAL\DAO\ExpenditureDAO.cs" />
+    <Compile Include="DAL\DAO\ExpenditureTitleDAO.cs" />
     <Compile Include="DAL\DAO\FMGContext.cs" />
     <Compile Include="DAL\DAO\IDAO.cs" />
+    <Compile Include="DAL\DAO\MonthDAO.cs" />
+    <Compile Include="DAL\DAO\OfferingDAO.cs" />
     <Compile Include="DAL\DataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -164,7 +196,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\DTO\ExpenditureDetailDTO.cs" />
+    <Compile Include="DAL\DTO\ExpenditureDTO.cs" />
+    <Compile Include="DAL\DTO\ExpenditureTitleDetailDTO.cs" />
+    <Compile Include="DAL\DTO\ExpenditureTitleDTO.cs" />
+    <Compile Include="DAL\DTO\MonthDetailDTO.cs" />
+    <Compile Include="DAL\DTO\MonthDTO.cs" />
     <Compile Include="DAL\DTO\OfferingsDetailDTO.cs" />
+    <Compile Include="DAL\DTO\OfferingsDTO.cs" />
     <Compile Include="DAL\EXPENDITURE.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
@@ -195,6 +234,7 @@
     <Compile Include="FormDashboard.Designer.cs">
       <DependentUpon>FormDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="General.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AllForms\FormDocumentImage.resx">
@@ -221,8 +261,8 @@
     <EmbeddedResource Include="AllForms\FormExpenditureTitleList.resx">
       <DependentUpon>FormExpenditureTitleList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AllForms\FormFinancialReport.resx">
-      <DependentUpon>FormFinancialReport.cs</DependentUpon>
+    <EmbeddedResource Include="AllForms\FormViewMonthlyReport.resx">
+      <DependentUpon>FormViewMonthlyReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AllForms\FormFinancialReportList.resx">
       <DependentUpon>FormFinancialReportList.cs</DependentUpon>
@@ -235,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AllForms\FormOfferingList.resx">
       <DependentUpon>FormOfferingList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AllForms\FormViewExpenditure.resx">
+      <DependentUpon>FormViewExpenditure.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDashboard.resx">
       <DependentUpon>FormDashboard.cs</DependentUpon>

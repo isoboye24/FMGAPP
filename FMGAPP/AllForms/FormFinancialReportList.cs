@@ -19,14 +19,14 @@ namespace FMGAPP.AllForms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            FormFinancialReport open = new FormFinancialReport();
+            FormViewMonthlyReport open = new FormViewMonthlyReport();
             this.Hide();
             open.ShowDialog();
             this.Visible = true;
         }
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            FormFinancialReport open = new FormFinancialReport();
+            FormViewMonthlyReport open = new FormViewMonthlyReport();
             this.Hide();
             open.ShowDialog();
             this.Visible = true;
@@ -34,7 +34,7 @@ namespace FMGAPP.AllForms
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            FormFinancialReport open = new FormFinancialReport();
+            FormViewMonthlyReport open = new FormViewMonthlyReport();
             this.Hide();
             open.ShowDialog();
             this.Visible = true;

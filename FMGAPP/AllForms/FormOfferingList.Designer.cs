@@ -111,6 +111,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(784, 317);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
             // tableLayoutPanel2
             // 
@@ -212,6 +213,7 @@
             this.btnDelete.TabIndex = 0;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -251,6 +253,7 @@
             this.btnSearch.TabIndex = 0;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label4
             // 
@@ -340,6 +343,7 @@
             this.btnClear.TabIndex = 0;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -385,6 +389,7 @@
             this.txtDay.Name = "txtDay";
             this.txtDay.Size = new System.Drawing.Size(147, 29);
             this.txtDay.TabIndex = 1;
+            this.txtDay.TextChanged += new System.EventHandler(this.txtDay_TextChanged);
             // 
             // txtYear
             // 
@@ -394,6 +399,7 @@
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(149, 29);
             this.txtYear.TabIndex = 1;
+            this.txtYear.TextChanged += new System.EventHandler(this.txtYear_TextChanged);
             // 
             // label2
             // 
@@ -435,6 +441,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormOfferingList";
             this.Text = "Offerings";
+            this.Load += new System.EventHandler(this.FormOfferingList_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);

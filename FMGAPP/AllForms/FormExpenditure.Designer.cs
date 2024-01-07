@@ -150,8 +150,8 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(842, 531);
             this.tableLayoutPanel1.TabIndex = 30;
             // 
@@ -167,16 +167,16 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Controls.Add(this.btnSave, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.btnClose, 3, 1);
+            this.tableLayoutPanel3.Controls.Add(this.btnSave, 3, 1);
+            this.tableLayoutPanel3.Controls.Add(this.btnClose, 1, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(19, 442);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(19, 453);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(802, 86);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(802, 75);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // btnSave
@@ -187,12 +187,13 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(263, 20);
+            this.btnSave.Location = new System.Drawing.Point(414, 18);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(124, 45);
+            this.btnSave.Size = new System.Drawing.Size(124, 39);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
@@ -202,9 +203,9 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(414, 20);
+            this.btnClose.Location = new System.Drawing.Point(263, 18);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(124, 45);
+            this.btnClose.Size = new System.Drawing.Size(124, 39);
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -225,7 +226,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 2F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(802, 418);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(802, 429);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // txtSummary
@@ -235,20 +236,20 @@
             this.txtSummary.Location = new System.Drawing.Point(3, 95);
             this.txtSummary.Multiline = true;
             this.txtSummary.Name = "txtSummary";
-            this.txtSummary.Size = new System.Drawing.Size(796, 320);
+            this.txtSummary.Size = new System.Drawing.Size(796, 331);
             this.txtSummary.TabIndex = 2;
             // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 8;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55F));
             this.tableLayoutPanel4.Controls.Add(this.cmbExpenditureTitle, 7, 0);
             this.tableLayoutPanel4.Controls.Add(this.txtAmountSpent, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.label4, 0, 0);
@@ -268,18 +269,18 @@
             this.cmbExpenditureTitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbExpenditureTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbExpenditureTitle.FormattingEnabled = true;
-            this.cmbExpenditureTitle.Location = new System.Drawing.Point(621, 3);
+            this.cmbExpenditureTitle.Location = new System.Drawing.Point(509, 3);
             this.cmbExpenditureTitle.Name = "cmbExpenditureTitle";
-            this.cmbExpenditureTitle.Size = new System.Drawing.Size(172, 29);
+            this.cmbExpenditureTitle.Size = new System.Drawing.Size(284, 29);
             this.cmbExpenditureTitle.TabIndex = 4;
             // 
             // txtAmountSpent
             // 
             this.txtAmountSpent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtAmountSpent.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAmountSpent.Location = new System.Drawing.Point(103, 3);
+            this.txtAmountSpent.Location = new System.Drawing.Point(83, 3);
             this.txtAmountSpent.Name = "txtAmountSpent";
-            this.txtAmountSpent.Size = new System.Drawing.Size(169, 29);
+            this.txtAmountSpent.Size = new System.Drawing.Size(99, 29);
             this.txtAmountSpent.TabIndex = 2;
             // 
             // label4
@@ -298,7 +299,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(316, 5);
+            this.label1.Location = new System.Drawing.Point(246, 5);
             this.label1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 21);
@@ -310,9 +311,9 @@
             this.dateTimePickerSpentDate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dateTimePickerSpentDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerSpentDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerSpentDate.Location = new System.Drawing.Point(368, 3);
+            this.dateTimePickerSpentDate.Location = new System.Drawing.Point(298, 3);
             this.dateTimePickerSpentDate.Name = "dateTimePickerSpentDate";
-            this.dateTimePickerSpentDate.Size = new System.Drawing.Size(169, 29);
+            this.dateTimePickerSpentDate.Size = new System.Drawing.Size(125, 29);
             this.dateTimePickerSpentDate.TabIndex = 3;
             // 
             // label3
@@ -320,7 +321,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(571, 5);
+            this.label3.Location = new System.Drawing.Point(459, 5);
             this.label3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 21);
@@ -366,6 +367,7 @@
             this.Name = "FormExpenditure";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Expenditure";
+            this.Load += new System.EventHandler(this.FormExpenditure_Load);
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconMinimize)).EndInit();

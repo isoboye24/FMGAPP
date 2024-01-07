@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace FMGAPP.DAL.DTO
 {
-    public class OfferingsDetailDTO
+    public class ExpenditureDetailDTO
     {
-        public int OfferingID { get; set; }
-        public decimal Offering { get; set; }
-        public string OfferingWithCurrency { get; set; }
+        public int ExpenditureID { get; set; }
+        public decimal AmountSpent { get; set; }
+        public string ExpenditureTitle { get; set; }
         public string Summary { get; set; }
         public int Day { get; set; }
         public int MonthID { get; set; }
         public string MonthName { get; set; }
         public int Year { get; set; }
+        public int ExpenditureTitleID { get; set; }
     }
 }

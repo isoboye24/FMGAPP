@@ -39,7 +39,6 @@
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtTitle = new System.Windows.Forms.TextBox();
             this.btnView = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtYear = new System.Windows.Forms.TextBox();
@@ -53,8 +52,8 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnGotoTitle = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.cmbExpenditureTitle = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -72,12 +71,13 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(564, 3);
+            this.btnClear.Location = new System.Drawing.Point(683, 3);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(94, 38);
             this.btnClear.TabIndex = 0;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // rbLess
             // 
@@ -123,12 +123,13 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(464, 3);
+            this.btnSearch.Location = new System.Drawing.Point(583, 3);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(94, 38);
             this.btnSearch.TabIndex = 0;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label4
             // 
@@ -147,7 +148,7 @@
             this.txtAmount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAmount.Location = new System.Drawing.Point(83, 3);
             this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(105, 29);
+            this.txtAmount.Size = new System.Drawing.Size(213, 29);
             this.txtAmount.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -161,7 +162,7 @@
             this.tableLayoutPanel6.Controls.Add(this.rbEqual, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.rbMore, 2, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(197, 3);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(309, 3);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -178,15 +179,6 @@
             this.label1.Size = new System.Drawing.Size(61, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Month";
-            // 
-            // txtTitle
-            // 
-            this.txtTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.Location = new System.Drawing.Point(294, 3);
-            this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(264, 29);
-            this.txtTitle.TabIndex = 1;
             // 
             // btnView
             // 
@@ -218,6 +210,7 @@
             this.btnDelete.TabIndex = 0;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // txtYear
             // 
@@ -227,6 +220,7 @@
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(149, 29);
             this.txtYear.TabIndex = 1;
+            this.txtYear.TextChanged += new System.EventHandler(this.txtYear_TextChanged);
             // 
             // label2
             // 
@@ -252,6 +246,7 @@
             // 
             // cmbMonth
             // 
+            this.cmbMonth.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbMonth.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMonth.FormattingEnabled = true;
             this.cmbMonth.Location = new System.Drawing.Point(73, 3);
@@ -340,6 +335,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(784, 317);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
             // tableLayoutPanel2
             // 
@@ -380,7 +376,7 @@
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.ColumnCount = 9;
+            this.tableLayoutPanel4.ColumnCount = 8;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3F));
@@ -388,14 +384,13 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.Controls.Add(this.btnSearch, 5, 0);
             this.tableLayoutPanel4.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.txtAmount, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel6, 3, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnClear, 6, 0);
-            this.tableLayoutPanel4.Controls.Add(this.btnGotoTitle, 7, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -403,22 +398,6 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(784, 44);
             this.tableLayoutPanel4.TabIndex = 2;
-            // 
-            // btnGotoTitle
-            // 
-            this.btnGotoTitle.BackColor = System.Drawing.Color.YellowGreen;
-            this.btnGotoTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnGotoTitle.FlatAppearance.BorderSize = 0;
-            this.btnGotoTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGotoTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGotoTitle.ForeColor = System.Drawing.Color.Black;
-            this.btnGotoTitle.Location = new System.Drawing.Point(664, 3);
-            this.btnGotoTitle.Name = "btnGotoTitle";
-            this.btnGotoTitle.Size = new System.Drawing.Size(114, 38);
-            this.btnGotoTitle.TabIndex = 0;
-            this.btnGotoTitle.Text = "Go to Title";
-            this.btnGotoTitle.UseVisualStyleBackColor = false;
-            this.btnGotoTitle.Click += new System.EventHandler(this.btnGotoTitle_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -432,11 +411,11 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel5.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.txtTitle, 4, 0);
             this.tableLayoutPanel5.Controls.Add(this.txtYear, 7, 0);
             this.tableLayoutPanel5.Controls.Add(this.label2, 3, 0);
             this.tableLayoutPanel5.Controls.Add(this.label3, 6, 0);
             this.tableLayoutPanel5.Controls.Add(this.cmbMonth, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.cmbExpenditureTitle, 4, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 55);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -444,6 +423,16 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(784, 34);
             this.tableLayoutPanel5.TabIndex = 2;
+            // 
+            // cmbExpenditureTitle
+            // 
+            this.cmbExpenditureTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbExpenditureTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbExpenditureTitle.FormattingEnabled = true;
+            this.cmbExpenditureTitle.Location = new System.Drawing.Point(294, 3);
+            this.cmbExpenditureTitle.Name = "cmbExpenditureTitle";
+            this.cmbExpenditureTitle.Size = new System.Drawing.Size(264, 29);
+            this.cmbExpenditureTitle.TabIndex = 2;
             // 
             // FormExpenditureList
             // 
@@ -453,6 +442,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormExpenditureList";
             this.Text = "Expenditures";
+            this.Load += new System.EventHandler(this.FormExpenditureList_Load);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -478,7 +468,6 @@
         private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtYear;
@@ -493,6 +482,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.Button btnGotoTitle;
+        private System.Windows.Forms.ComboBox cmbExpenditureTitle;
     }
 }

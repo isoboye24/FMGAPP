@@ -38,7 +38,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtAmount = new System.Windows.Forms.TextBox();
+            this.txtExpenditureTitle = new System.Windows.Forms.TextBox();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconClose)).BeginInit();
@@ -128,12 +128,13 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(80, 185);
+            this.btnSave.Location = new System.Drawing.Point(228, 185);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(124, 38);
             this.btnSave.TabIndex = 34;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
@@ -142,7 +143,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(228, 185);
+            this.btnClose.Location = new System.Drawing.Point(80, 185);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(124, 38);
             this.btnClose.TabIndex = 34;
@@ -162,20 +163,20 @@
             this.label4.Text = "Expenditure Title";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // txtAmount
+            // txtExpenditureTitle
             // 
-            this.txtAmount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAmount.Location = new System.Drawing.Point(80, 123);
-            this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(272, 29);
-            this.txtAmount.TabIndex = 36;
+            this.txtExpenditureTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtExpenditureTitle.Location = new System.Drawing.Point(80, 123);
+            this.txtExpenditureTitle.Name = "txtExpenditureTitle";
+            this.txtExpenditureTitle.Size = new System.Drawing.Size(272, 29);
+            this.txtExpenditureTitle.TabIndex = 36;
             // 
             // FormExpenditureTitle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(446, 269);
-            this.Controls.Add(this.txtAmount);
+            this.Controls.Add(this.txtExpenditureTitle);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
@@ -187,6 +188,7 @@
             this.Name = "FormExpenditureTitle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Expenditure Title";
+            this.Load += new System.EventHandler(this.FormExpenditureTitle_Load);
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconMinimize)).EndInit();
@@ -208,6 +210,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtAmount;
+        private System.Windows.Forms.TextBox txtExpenditureTitle;
     }
 }

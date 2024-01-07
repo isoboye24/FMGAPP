@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FMGAPP.AllForms
 {
-    public partial class FormFinancialReport : Form
+    public partial class FormViewMonthlyReport : Form
     {
-        public FormFinancialReport()
+        public FormViewMonthlyReport()
         {
             InitializeComponent();
         }
