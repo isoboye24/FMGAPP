@@ -340,6 +340,7 @@
             this.Name = "FormViewMonthlyReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Financial Report";
+            this.Load += new System.EventHandler(this.FormViewMonthlyReport_Load);
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconMinimize)).EndInit();

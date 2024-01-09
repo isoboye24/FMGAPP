@@ -26,5 +26,10 @@ namespace FMGAPP.AllForms
         {
             this.Close();
         }
+
+        private void FormViewMonthlyReport_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

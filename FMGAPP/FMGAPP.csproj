@@ -110,6 +110,12 @@
     <Compile Include="AllForms\FormExpenditureTitleList.Designer.cs">
       <DependentUpon>FormExpenditureTitleList.cs</DependentUpon>
     </Compile>
+    <Compile Include="AllForms\FormFinancialReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllForms\FormFinancialReport.Designer.cs">
+      <DependentUpon>FormFinancialReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="AllForms\FormViewTotalBalance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,11 +178,13 @@
     </Compile>
     <Compile Include="BLL\ExpenditureBLL.cs" />
     <Compile Include="BLL\ExpenditureTitleBLL.cs" />
+    <Compile Include="BLL\FinancialReportBLL.cs" />
     <Compile Include="BLL\IBLL.cs" />
     <Compile Include="BLL\MonthBLL.cs" />
     <Compile Include="BLL\OfferingBLL.cs" />
     <Compile Include="DAL\DAO\ExpenditureDAO.cs" />
     <Compile Include="DAL\DAO\ExpenditureTitleDAO.cs" />
+    <Compile Include="DAL\DAO\FinancialReportDAO.cs" />
     <Compile Include="DAL\DAO\FMGContext.cs" />
     <Compile Include="DAL\DAO\IDAO.cs" />
     <Compile Include="DAL\DAO\MonthDAO.cs" />
@@ -200,6 +208,8 @@
     <Compile Include="DAL\DTO\ExpenditureDTO.cs" />
     <Compile Include="DAL\DTO\ExpenditureTitleDetailDTO.cs" />
     <Compile Include="DAL\DTO\ExpenditureTitleDTO.cs" />
+    <Compile Include="DAL\DTO\FinancialReportDetailDTO.cs" />
+    <Compile Include="DAL\DTO\FinancialReportDTO.cs" />
     <Compile Include="DAL\DTO\MonthDetailDTO.cs" />
     <Compile Include="DAL\DTO\MonthDTO.cs" />
     <Compile Include="DAL\DTO\OfferingsDetailDTO.cs" />
@@ -260,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AllForms\FormExpenditureTitleList.resx">
       <DependentUpon>FormExpenditureTitleList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AllForms\FormFinancialReport.resx">
+      <DependentUpon>FormFinancialReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AllForms\FormViewMonthlyReport.resx">
       <DependentUpon>FormViewMonthlyReport.cs</DependentUpon>
