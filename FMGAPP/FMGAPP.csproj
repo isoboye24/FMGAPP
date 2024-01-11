@@ -60,6 +60,12 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
+    <Reference Include="Xceed.Document.NET, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.2.5.0\lib\net40\Xceed.Document.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Words.NET, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.2.5.0\lib\net40\Xceed.Words.NET.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AllForms\FormDocumentImage.cs">
@@ -121,6 +127,12 @@
     </Compile>
     <Compile Include="AllForms\FormViewImageDocument.Designer.cs">
       <DependentUpon>FormViewImageDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AllForms\FormViewOtherDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllForms\FormViewOtherDocument.Designer.cs">
+      <DependentUpon>FormViewOtherDocument.cs</DependentUpon>
     </Compile>
     <Compile Include="AllForms\FormViewTotalBalance.cs">
       <SubType>Form</SubType>
@@ -189,6 +201,7 @@
     <Compile Include="BLL\ImageDocumentBLL.cs" />
     <Compile Include="BLL\MonthBLL.cs" />
     <Compile Include="BLL\OfferingBLL.cs" />
+    <Compile Include="BLL\OtherDocumentsBLL.cs" />
     <Compile Include="DAL\DAO\ExpenditureDAO.cs" />
     <Compile Include="DAL\DAO\ExpenditureTitleDAO.cs" />
     <Compile Include="DAL\DAO\FinancialReportDAO.cs" />
@@ -197,6 +210,7 @@
     <Compile Include="DAL\DAO\ImageDocumentDAO.cs" />
     <Compile Include="DAL\DAO\MonthDAO.cs" />
     <Compile Include="DAL\DAO\OfferingDAO.cs" />
+    <Compile Include="DAL\DAO\OtherDocumentsDAO.cs" />
     <Compile Include="DAL\DataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -224,6 +238,8 @@
     <Compile Include="DAL\DTO\MonthDTO.cs" />
     <Compile Include="DAL\DTO\OfferingsDetailDTO.cs" />
     <Compile Include="DAL\DTO\OfferingsDTO.cs" />
+    <Compile Include="DAL\DTO\OtherDocumentDTO.cs" />
+    <Compile Include="DAL\DTO\OtherDocumentsDetailDTO.cs" />
     <Compile Include="DAL\EXPENDITURE.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
@@ -257,6 +273,7 @@
     <Compile Include="General.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReadFiles.cs" />
     <EmbeddedResource Include="AllForms\FormDocumentImage.resx">
       <DependentUpon>FormDocumentImage.cs</DependentUpon>
     </EmbeddedResource>
@@ -305,6 +322,9 @@
     <EmbeddedResource Include="AllForms\FormViewExpenditure.resx">
       <DependentUpon>FormViewExpenditure.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AllForms\FormViewOtherDocument.resx">
+      <DependentUpon>FormViewOtherDocument.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDashboard.resx">
       <DependentUpon>FormDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -316,6 +336,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EntityDeploy Include="DAL\DataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -350,6 +371,7 @@
       <DependentUpon>DataModel.edmx</DependentUpon>
       <LastGenOutput>DataModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\fileImage.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
