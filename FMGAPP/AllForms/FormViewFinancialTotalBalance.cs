@@ -16,5 +16,10 @@ namespace FMGAPP.AllForms
         {
             InitializeComponent();
         }
+
+        private void FormViewFinancialTotalBalance_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

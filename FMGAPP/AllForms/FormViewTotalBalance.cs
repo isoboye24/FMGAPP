@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FMGAPP.BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,14 @@ namespace FMGAPP.AllForms
         public FormViewTotalBalance()
         {
             InitializeComponent();
+        }
+        FinancialReportBLL bll = new FinancialReportBLL();
+        private void FormViewTotalBalance_Load(object sender, EventArgs e)
+        {
+            labelHeading.Text = "Overall Total Balance Report";
+            labelOfferingAmount.Text = "€ " + bll.TotalOffering();
+            labelExpenditureAmount.Text = "€ " + bll.TotalExpenditures();
+            labelBalanceAmount.Text = "€ " + (bll.TotalOffering() - bll.TotalExpenditures());
         }
     }
 }

@@ -9,74 +9,30 @@ using System.Threading.Tasks;
 
 namespace FMGAPP.BLL
 {
-    public class FinancialReportBLL : IBLL<FinancialReportDTO, FinancialReportDetailDTO>
+    public class FinancialReportBLL
     {
         MonthDAO monthDAO = new MonthDAO();
         FinancialReportDAO dao = new FinancialReportDAO();
-        public bool Delete(FinancialReportDetailDTO entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool GetBack(FinancialReportDetailDTO entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Insert(FinancialReportDetailDTO entity)
-        {
-            FINANCIAL_REPORT financialReport = new FINANCIAL_REPORT();
-            financialReport.totalOfferings = entity.TotalOfferings;
-            financialReport.totalExpenditures = entity.TotalExpenditures;
-            financialReport.summary = entity.Summary;
-            financialReport.monthID = entity.MonthID;
-            financialReport.year = entity.Year;
-            return dao.Insert(financialReport);
-        }
-
         public FinancialReportDTO Select()
         {
             FinancialReportDTO dto = new FinancialReportDTO();
             dto.Months = monthDAO.Select();
             dto.FinancialReports = dao.Select();
-            dto.Years = dao.SelectOnlyYears();
             return dto;
         }
-        public List<OFFERING> CheckOfferings(int month, int year)
+        public FinancialReportDTO SelectYearlyReport()
         {
-            return dao.CheckOfferings(month, year);
+            FinancialReportDTO dto = new FinancialReportDTO();
+            dto.FinancialReports = dao.SelectYearlyReport();
+            return dto;
         }
-        public List<OFFERING> CheckOfferingsAmount(int month, int year)
+        public decimal TotalOffering()
         {
-            return dao.CheckOfferingsAmount(month, year);
+            return dao.TotalOffering();
         }
-        public decimal TotalOffering(int month, int year)
+        public decimal TotalExpenditures()
         {
-            return dao.TotalOffering(month, year);
-        }
-        public List<EXPENDITURE> CheckExpenditure(int month, int year)
-        {
-            return dao.CheckExpenditure(month, year);
-        }
-        public List<EXPENDITURE> CheckExpenditureAmount(int month, int year)
-        {
-            return dao.CheckExpenditureAmount(month, year);
-        }
-        public decimal TotalExpenditures(int month, int year)
-        {
-            return dao.TotalExpenditures(month, year);
-        }
-
-        public bool Update(FinancialReportDetailDTO entity)
-        {
-            FINANCIAL_REPORT financialReport = new FINANCIAL_REPORT();
-            financialReport.financialReportID = entity.FinancialReportID;
-            financialReport.totalOfferings = entity.TotalOfferings;
-            financialReport.totalExpenditures = entity.TotalExpenditures;
-            financialReport.summary = entity.Summary;
-            financialReport.monthID = entity.MonthID;
-            financialReport.year = entity.Year;
-            return dao.Update(financialReport);
+            return dao.TotalExpenditures();
         }
     }
 }

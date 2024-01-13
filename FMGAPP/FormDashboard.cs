@@ -265,7 +265,7 @@ namespace FMGAPP
         private void btnYearlyReport_Click(object sender, EventArgs e)
         {
             buttonWasClicked = true;            
-            OpenChildForm(new FormViewYearlyReport());
+            OpenChildForm(new FormViewYearlyReportList());
             HideSubmenu(panelFinancialReport);
             if (panelFinancialReport.Visible == false)
             {

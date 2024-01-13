@@ -116,12 +116,6 @@
     <Compile Include="AllForms\FormExpenditureTitleList.Designer.cs">
       <DependentUpon>FormExpenditureTitleList.cs</DependentUpon>
     </Compile>
-    <Compile Include="AllForms\FormFinancialReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AllForms\FormFinancialReport.Designer.cs">
-      <DependentUpon>FormFinancialReport.cs</DependentUpon>
-    </Compile>
     <Compile Include="AllForms\FormViewImageDocument.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -298,8 +292,8 @@
     <EmbeddedResource Include="AllForms\FormExpenditureTitleList.resx">
       <DependentUpon>FormExpenditureTitleList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AllForms\FormFinancialReport.resx">
-      <DependentUpon>FormFinancialReport.cs</DependentUpon>
+    <EmbeddedResource Include="AllForms\FormViewFinancialTotalBalance.resx">
+      <DependentUpon>FormViewFinancialTotalBalance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AllForms\FormViewImageDocument.resx">
       <DependentUpon>FormViewImageDocument.cs</DependentUpon>
@@ -324,6 +318,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AllForms\FormViewOtherDocument.resx">
       <DependentUpon>FormViewOtherDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AllForms\FormViewTotalBalance.resx">
+      <DependentUpon>FormViewTotalBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AllForms\FormViewYearlyReport.resx">
+      <DependentUpon>FormViewYearlyReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AllForms\FormViewYearlyReportList.resx">
+      <DependentUpon>FormViewYearlyReportList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDashboard.resx">
       <DependentUpon>FormDashboard.cs</DependentUpon>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FMGAPP.BLL;
+using FMGAPP.DAL.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,10 +28,25 @@ namespace FMGAPP.AllForms
         {
             this.Close();
         }
-
+        public FinancialReportDetailDTO detail = new FinancialReportDetailDTO();
+        public bool isMonthlyReport = false;
+        public bool isYearlyReport = false;
         private void FormViewMonthlyReport_Load(object sender, EventArgs e)
         {
-
-        }
+            if (isMonthlyReport)
+            {
+                labelHeading.Text = detail.MonthName + " " + detail.Year + " Balance Report";
+                labelOfferingAmount.Text = detail.TotalOfferingsWithCurrency;
+                labelExpenditureAmount.Text = detail.TotalExpendituresWithCurrency;
+                labelBalanceAmount.Text = detail.TotalBalanceWithCurrency;
+            }
+            else if (isYearlyReport)
+            {
+                labelHeading.Text = detail.Year + " Balance Report";
+                labelOfferingAmount.Text = detail.TotalOfferingsWithCurrency;
+                labelExpenditureAmount.Text = detail.TotalExpendituresWithCurrency;
+                labelBalanceAmount.Text = detail.TotalBalanceWithCurrency;
+            }            
+        }        
     }
 }

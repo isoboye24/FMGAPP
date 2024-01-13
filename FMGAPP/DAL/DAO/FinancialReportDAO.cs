@@ -1,118 +1,126 @@
 ﻿using FMGAPP.DAL.DTO;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Menu;
 
 namespace FMGAPP.DAL.DAO
 {
-    public class FinancialReportDAO : FMGContext, IDAO<FinancialReportDetailDTO, FINANCIAL_REPORT>
+    public class FinancialReportDAO : FMGContext
     {
-        public bool Delete(FINANCIAL_REPORT entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool GetBack(int ID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Insert(FINANCIAL_REPORT entity)
-        {
-            try
-            {
-                db.FINANCIAL_REPORT.Add(entity);
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
         public List<FinancialReportDetailDTO> Select()
         {
-            try
+            List<FinancialReportDetailDTO> financialReports = new List<FinancialReportDetailDTO>();
+            List<int> monthIDCollection = new List<int>();
+            List<int> monthIDs = new List<int>();
+            List<int> yearsCollection = new List<int>();
+            List<int> years = new List<int>();
+            List<decimal> totalOfferingCollection = new List<decimal>();
+            List<decimal> totalExpenditure = new List<decimal>();
+
+            var OfferingYear = db.OFFERINGs.Where(x => x.isDeleted == false).ToList();
+            foreach (var item in OfferingYear)
+            {                
+                yearsCollection.Add(item.year);                
+            }
+            years = yearsCollection.Distinct().ToList();
+            foreach (var yearItem in years)
             {
-                List<FinancialReportDetailDTO> financialReports = new List<FinancialReportDetailDTO>();
-                var list = (from f in db.FINANCIAL_REPORT.Where(x => x.isDeleted == false)
-                            join m in db.MONTHs on f.monthID equals m.monthID
-                            select new
-                            {
-                                financialReportID = f.financialReportID,
-                                totalOfferings = f.totalOfferings,
-                                totalExpenditures = f.totalExpenditures,
-                                summary = f.summary,
-                                monthID = f.monthID,
-                                monthName = m.monthName,
-                                year = f.year
-                            }).OrderByDescending(x => x.year).ThenByDescending(x => x.monthID).ToList();
-                foreach (var item in list)
+                var OfferingMonth = db.OFFERINGs.Where(x => x.isDeleted == false && x.year == yearItem).ToList();
+                foreach (var item in OfferingMonth)
+                {
+                    monthIDCollection.Add(item.monthID);
+                }
+                monthIDs = monthIDCollection.Distinct().ToList();
+                monthIDCollection.Clear();
+                foreach (var monthItem in monthIDs)
                 {
                     FinancialReportDetailDTO dto = new FinancialReportDetailDTO();
-                    dto.FinancialReportID = item.financialReportID;
-                    dto.TotalOfferings = item.totalOfferings;
-                    dto.TotalOfferingsWithCurrency = "€ " + item.totalOfferings;
-                    dto.TotalExpenditures = item.totalExpenditures;
-                    dto.TotalExpendituresWithCurrency = "€ " + item.totalExpenditures;
-                    dto.TotalBalance = item.totalOfferings - item.totalExpenditures;
+                    dto.FinancialReportID += 1;
+                    dto.MonthID = monthItem;
+                    dto.Year = yearItem;
+                    var Offerings = db.OFFERINGs.Where(x => x.isDeleted == false && x.monthID == monthItem).ToList();
+                    foreach (var offering in Offerings)
+                    {
+                        totalOfferingCollection.Add(offering.offerings);
+                    }
+                    dto.TotalOfferings = totalOfferingCollection.Sum();
+                    dto.TotalOfferingsWithCurrency = "€ " + dto.TotalOfferings;
+
+                    var Expenditures = db.EXPENDITUREs.Where(x => x.isDeleted == false && x.monthID == monthItem).ToList();
+                    foreach (var expenditure in Expenditures)
+                    {
+                        totalExpenditure.Add(expenditure.amountSpent);
+                    }
+                    dto.TotalExpenditures = totalExpenditure.Sum();
+                    dto.TotalExpendituresWithCurrency = "€ " + dto.TotalExpenditures;
+                    dto.TotalBalance = dto.TotalOfferings - dto.TotalExpenditures;
                     dto.TotalBalanceWithCurrency = "€ " + dto.TotalBalance;
-                    dto.Summary = item.summary;
-                    dto.MonthID = item.monthID;
-                    dto.MonthName = item.monthName;
-                    dto.Year = item.year;
+                    dto.MonthName = General.ConventIntToMonth(monthItem);
                     financialReports.Add(dto);
+                    totalOfferingCollection.Clear();
+                    totalExpenditure.Clear();
                 }
-                return financialReports;
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return financialReports;
         }
 
-        public List<int> SelectOnlyYears()
+        public List<FinancialReportDetailDTO> SelectYearlyReport()
         {
-            try
+            List<FinancialReportDetailDTO> financialReports = new List<FinancialReportDetailDTO>();
+            List<int> yearsCollection = new List<int>();
+            List<int> years = new List<int>();
+            List<decimal> totalOfferingCollection = new List<decimal>();
+            List<decimal> totalExpenditure = new List<decimal>();
+
+            var OfferingYear = db.OFFERINGs.Where(x => x.isDeleted == false).ToList();
+            foreach (var item in OfferingYear)
             {
-                List<int> years = new List<int>();
-                List<int> AllYears = new List<int>();
-                var list = db.FINANCIAL_REPORT.Where(x => x.isDeleted == false).OrderByDescending(x=>x.year).ToList();                            
-                foreach (var item in list)
+                yearsCollection.Add(item.year);
+            }
+            years = yearsCollection.Distinct().ToList();
+            foreach (var yearItem in years)
+            {
+                FinancialReportDetailDTO dto = new FinancialReportDetailDTO();
+                dto.FinancialReportID += 1;
+                dto.Year = yearItem;
+                dto.MonthID = 0;
+                dto.MonthName = "";
+                var Offerings = db.OFFERINGs.Where(x => x.isDeleted == false && x.year == yearItem).ToList();
+                foreach (var offering in Offerings)
                 {
-                    AllYears.Add(item.year);
+                    totalOfferingCollection.Add(offering.offerings);
                 }
-                years = AllYears.Distinct().ToList();
-                return years;
+                dto.TotalOfferings = totalOfferingCollection.Sum();
+                dto.TotalOfferingsWithCurrency = "€ " + dto.TotalOfferings;
+
+                var Expenditures = db.EXPENDITUREs.Where(x => x.isDeleted == false && x.year == yearItem).ToList();
+                foreach (var expenditure in Expenditures)
+                {
+                    totalExpenditure.Add(expenditure.amountSpent);
+                }
+                dto.TotalExpenditures = totalExpenditure.Sum();
+                dto.TotalExpendituresWithCurrency = "€ " + dto.TotalExpenditures;
+                dto.TotalBalance = dto.TotalOfferings - dto.TotalExpenditures;
+                dto.TotalBalanceWithCurrency = "€ " + dto.TotalBalance;
+                financialReports.Add(dto);
+                totalOfferingCollection.Clear();
+                totalExpenditure.Clear();
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return financialReports;
         }
-        public List<OFFERING> CheckOfferings(int month, int year)
-        {
-            try
-            {
-                List<OFFERING> list = db.OFFERINGs.Where(x => x.isDeleted == false && x.year == year && x.monthID == month).ToList();
-                return list;                
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public decimal TotalOffering(int month, int year)
+
+        public decimal TotalOffering()
         {
             try
             {
                 decimal totalOfferings = 0;
-                var list = db.OFFERINGs.Where(x => x.isDeleted == false && x.year == year && x.monthID == month).ToList();
+                var list = db.OFFERINGs.Where(x => x.isDeleted == false).ToList();
                 if (list.Count > 0)
                 {
                     foreach (var item in list)
@@ -131,48 +139,13 @@ namespace FMGAPP.DAL.DAO
                 throw ex;
             }
         }
-        public List<OFFERING> CheckOfferingsAmount(int month, int year)
-        {
-            try
-            {
-                List<OFFERING> list = db.OFFERINGs.Where(x => x.isDeleted == false && x.year == year && x.monthID == month && x.offerings > 0).ToList();
-                return list;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public List<EXPENDITURE> CheckExpenditure(int month, int year)
-        {
-            try
-            {
-                List<EXPENDITURE> list = db.EXPENDITUREs.Where(x => x.isDeleted == false && x.year == year && x.monthID == month).ToList();
-                return list;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public List<EXPENDITURE> CheckExpenditureAmount(int month, int year)
-        {
-            try
-            {
-                List<EXPENDITURE> list = db.EXPENDITUREs.Where(x => x.isDeleted == false && x.year == year && x.monthID == month && x.amountSpent > 0).ToList();
-                return list;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public decimal TotalExpenditures(int month, int year)
+
+        public decimal TotalExpenditures()
         {
             try
             {
                 decimal totalExpenditures = 0;
-                var list = db.EXPENDITUREs.Where(x => x.isDeleted == false && x.year == year && x.monthID == month).ToList();
+                var list = db.EXPENDITUREs.Where(x => x.isDeleted == false).ToList();
                 if (list.Count > 0)
                 {
                     foreach (var item in list)
@@ -192,24 +165,5 @@ namespace FMGAPP.DAL.DAO
             }
         }
 
-        public bool Update(FINANCIAL_REPORT entity)
-        {
-            try
-            {
-                FINANCIAL_REPORT financialReport = db.FINANCIAL_REPORT.First(x=>x.financialReportID == entity.financialReportID);
-                financialReport.totalOfferings = entity.totalOfferings;
-                financialReport.totalExpenditures = entity.totalExpenditures;
-                financialReport.summary = entity.summary;
-                financialReport.monthID = entity.monthID;
-                financialReport.year = entity.year;
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            
-        }
     }
 }
