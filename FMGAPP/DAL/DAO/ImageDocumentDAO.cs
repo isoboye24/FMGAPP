@@ -26,9 +26,35 @@ namespace FMGAPP.DAL.DAO
             }
         }
 
+        public bool DeletePermanently(IMAGE_DOCUMENT entity)
+        {
+            try
+            {
+                IMAGE_DOCUMENT document = db.IMAGE_DOCUMENT.First(x => x.documentImageID == entity.documentImageID);
+                db.IMAGE_DOCUMENT.Remove(document);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public bool GetBack(int ID)
         {
-            throw new NotImplementedException();
+            try
+            {
+                IMAGE_DOCUMENT document = db.IMAGE_DOCUMENT.First(x => x.documentImageID == ID);
+                document.isDeleted = false;
+                document.deletedDate = null;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public bool Insert(IMAGE_DOCUMENT entity)
@@ -76,6 +102,39 @@ namespace FMGAPP.DAL.DAO
             }
             return documents;
         }
+
+        public List<ImageDocumentDetailDTO> Select(bool isDeleted)
+        {
+            List<ImageDocumentDetailDTO> documents = new List<ImageDocumentDetailDTO>();
+            var list = (from i in db.IMAGE_DOCUMENT.Where(x => x.isDeleted == isDeleted)
+                        join m in db.MONTHs on i.monthID equals m.monthID
+                        select new
+                        {
+                            imageDocumentID = i.documentImageID,
+                            imagePath = i.imagePath,
+                            documentName = i.imageCaption,
+                            summary = i.summary,
+                            day = i.day,
+                            monthID = i.monthID,
+                            monthName = m.monthName,
+                            year = i.year
+                        }).OrderByDescending(x => x.year).ThenByDescending(x => x.monthID).ThenByDescending(x => x.day).ThenBy(x => x.documentName).ToList();
+            foreach (var item in list)
+            {
+                ImageDocumentDetailDTO dto = new ImageDocumentDetailDTO();
+                dto.DocumentImageID = item.imageDocumentID;
+                dto.ImagePath = item.imagePath;
+                dto.DocumentName = item.documentName;
+                dto.Summary = item.summary;
+                dto.Day = item.day;
+                dto.MonthID = item.monthID;
+                dto.MonthName = item.monthName;
+                dto.Year = item.year;
+                documents.Add(dto);
+            }
+            return documents;
+        }
+
         public List<int> SelectOnlyYears()
         {
             try

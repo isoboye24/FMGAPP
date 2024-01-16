@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FMGAPP.DAL.DAO
+namespace FMGAPP.DAL.DTO
 {
-    public class FMGContext
+    public class LoginDTO
     {
-        public FMGEntities1 db = new FMGEntities1();
+        public List<LoginDetailDTO> Logins { get; set; }
     }
 }

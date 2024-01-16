@@ -15,7 +15,6 @@ namespace FMGAPP.DAL.DTO
         public string TotalExpendituresWithCurrency { get; set; }
         public decimal TotalBalance { get; set; }
         public string TotalBalanceWithCurrency { get; set; }
-        //public string Summary { get; set; }
         public int MonthID { get; set; }
         public string MonthName { get; set; }
         public int Year { get; set; }

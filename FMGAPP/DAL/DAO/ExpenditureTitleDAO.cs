@@ -26,9 +26,35 @@ namespace FMGAPP.DAL.DAO
             }
         }
 
+        public bool DeletePermanently(EXPENDITURE_TITLE entity)
+        {
+            try
+            {
+                EXPENDITURE_TITLE title = db.EXPENDITURE_TITLE.First(x => x.expenditureTitleID == entity.expenditureTitleID);
+                db.EXPENDITURE_TITLE.Remove(title);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public bool GetBack(int ID)
         {
-            throw new NotImplementedException();
+            try
+            {
+                EXPENDITURE_TITLE title = db.EXPENDITURE_TITLE.First(x => x.expenditureTitleID == ID);
+                title.isDeleted = false;
+                title.deletedDate = null;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public bool Insert(EXPENDITURE_TITLE entity)
@@ -51,6 +77,27 @@ namespace FMGAPP.DAL.DAO
             {
                 List<ExpenditureTitleDetailDTO> expenditureTitles = new List<ExpenditureTitleDetailDTO>();
                 var list = db.EXPENDITURE_TITLE.Where(x => x.isDeleted == false).ToList();
+                foreach (var item in list)
+                {
+                    ExpenditureTitleDetailDTO dto = new ExpenditureTitleDetailDTO();
+                    dto.ExpenditureTitleID = item.expenditureTitleID;
+                    dto.ExpenditureTitle = item.expenditureTitle;
+                    expenditureTitles.Add(dto);
+                }
+                return expenditureTitles;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<ExpenditureTitleDetailDTO> Select(bool isDeleted)
+        {
+            try
+            {
+                List<ExpenditureTitleDetailDTO> expenditureTitles = new List<ExpenditureTitleDetailDTO>();
+                var list = db.EXPENDITURE_TITLE.Where(x => x.isDeleted == isDeleted).ToList();
                 foreach (var item in list)
                 {
                     ExpenditureTitleDetailDTO dto = new ExpenditureTitleDetailDTO();

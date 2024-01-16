@@ -19,10 +19,16 @@ namespace FMGAPP.BLL
             offering.offeringID = entity.OfferingID;
             return dao.Delete(offering);
         }
+        public bool DeletePermanently(OfferingsDetailDTO entity)
+        {
+            OFFERING offering = new OFFERING();
+            offering.offeringID = entity.OfferingID;
+            return dao.DeletePermanently(offering);
+        }
 
         public bool GetBack(OfferingsDetailDTO entity)
         {
-            throw new NotImplementedException();
+            return dao.GetBack(entity.OfferingID);
         }
 
         public bool Insert(OfferingsDetailDTO entity)

@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,6 +26,10 @@ namespace FMGAPP.AllForms
         {
             this.Close();
         }
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int IParam);
 
         private void iconClose_Click(object sender, EventArgs e)
         {
@@ -131,6 +136,11 @@ namespace FMGAPP.AllForms
                 string imagePath = Application.StartupPath + "\\documents\\" + detail.ImagePath;
                 picImage.ImageLocation = imagePath;                
             }
+        }
+
+        private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

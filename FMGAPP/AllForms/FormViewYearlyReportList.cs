@@ -25,7 +25,7 @@ namespace FMGAPP.AllForms
         {
             if (detail.FinancialReportID == 0)
             {
-                MessageBox.Show("Please choose a monthly report from the table.");
+                MessageBox.Show("Please choose a yearly report from the table.");
             }
             else
             {
@@ -53,6 +53,7 @@ namespace FMGAPP.AllForms
             dataGridView1.Columns[7].Visible = false;
             dataGridView1.Columns[8].Visible = false;
             dataGridView1.Columns[9].HeaderText = "Year";
+            dataGridView1.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

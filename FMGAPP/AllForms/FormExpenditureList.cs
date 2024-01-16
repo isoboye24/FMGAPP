@@ -76,13 +76,18 @@ namespace FMGAPP.AllForms
             dataGridView1.DataSource = dto.Expenditures;
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[1].HeaderText = "Amount Spent";
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[2].HeaderText = "Expenditure Title";
             dataGridView1.Columns[3].Visible = false;
             dataGridView1.Columns[4].HeaderText = "Day";
+            dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].HeaderText = "Month";
+            dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[7].HeaderText = "Year";
+            dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[8].Visible = false;
+            dataGridView1.Columns[9].Visible = false;
         }
         public void ClearFilters()
         {
@@ -155,6 +160,7 @@ namespace FMGAPP.AllForms
             detail.MonthName = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
             detail.Year = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[7].Value);
             detail.ExpenditureTitleID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[8].Value);
+            detail.isExpenditureTitleDeleted = Convert.ToBoolean(dataGridView1.Rows[e.RowIndex].Cells[9].Value);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

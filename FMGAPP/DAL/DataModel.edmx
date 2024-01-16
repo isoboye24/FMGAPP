@@ -28,19 +28,6 @@
           <Property Name="isDeleted" Type="bit" Nullable="false" />
           <Property Name="deletedDate" Type="date" />
         </EntityType>
-        <EntityType Name="FINANCIAL_REPORT">
-          <Key>
-            <PropertyRef Name="financialReportID" />
-          </Key>
-          <Property Name="financialReportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="totalOfferings" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="totalExpenditures" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="summary" Type="text" />
-          <Property Name="monthID" Type="int" Nullable="false" />
-          <Property Name="year" Type="int" Nullable="false" />
-          <Property Name="isDeleted" Type="bit" Nullable="false" />
-          <Property Name="deletedDate" Type="date" />
-        </EntityType>
         <EntityType Name="IMAGE_DOCUMENT">
           <Key>
             <PropertyRef Name="documentImageID" />
@@ -100,7 +87,6 @@
         <EntityContainer Name="FMGModelStoreContainer">
           <EntitySet Name="EXPENDITURE" EntityType="Self.EXPENDITURE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EXPENDITURE_TITLE" EntityType="Self.EXPENDITURE_TITLE" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FINANCIAL_REPORT" EntityType="Self.FINANCIAL_REPORT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IMAGE_DOCUMENT" EntityType="Self.IMAGE_DOCUMENT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOGIN" EntityType="Self.LOGIN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MONTH" EntityType="Self.MONTH" Schema="dbo" store:Type="Tables" />
@@ -132,19 +118,6 @@
           </Key>
           <Property Name="expenditureTitleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="expenditureTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="deletedDate" Type="DateTime" Precision="0" />
-        </EntityType>
-        <EntityType Name="FINANCIAL_REPORT">
-          <Key>
-            <PropertyRef Name="financialReportID" />
-          </Key>
-          <Property Name="financialReportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="totalOfferings" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="totalExpenditures" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="monthID" Type="Int32" Nullable="false" />
-          <Property Name="year" Type="Int32" Nullable="false" />
           <Property Name="isDeleted" Type="Boolean" Nullable="false" />
           <Property Name="deletedDate" Type="DateTime" Precision="0" />
         </EntityType>
@@ -204,10 +177,9 @@
           <Property Name="isDeleted" Type="Boolean" Nullable="false" />
           <Property Name="deletedDate" Type="DateTime" Precision="0" />
         </EntityType>
-        <EntityContainer Name="FMGEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="FMGEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="EXPENDITUREs" EntityType="Self.EXPENDITURE" />
           <EntitySet Name="EXPENDITURE_TITLE" EntityType="Self.EXPENDITURE_TITLE" />
-          <EntitySet Name="FINANCIAL_REPORT" EntityType="Self.FINANCIAL_REPORT" />
           <EntitySet Name="IMAGE_DOCUMENT" EntityType="Self.IMAGE_DOCUMENT" />
           <EntitySet Name="LOGINs" EntityType="Self.LOGIN" />
           <EntitySet Name="MONTHs" EntityType="Self.MONTH" />
@@ -219,7 +191,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FMGModelStoreContainer" CdmEntityContainer="FMGEntities">
+        <EntityContainerMapping StorageEntityContainer="FMGModelStoreContainer" CdmEntityContainer="FMGEntities1">
           <EntitySetMapping Name="EXPENDITUREs">
             <EntityTypeMapping TypeName="FMGModel.EXPENDITURE">
               <MappingFragment StoreEntitySet="EXPENDITURE">
@@ -240,20 +212,6 @@
               <MappingFragment StoreEntitySet="EXPENDITURE_TITLE">
                 <ScalarProperty Name="expenditureTitleID" ColumnName="expenditureTitleID" />
                 <ScalarProperty Name="expenditureTitle" ColumnName="expenditureTitle" />
-                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
-                <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FINANCIAL_REPORT">
-            <EntityTypeMapping TypeName="FMGModel.FINANCIAL_REPORT">
-              <MappingFragment StoreEntitySet="FINANCIAL_REPORT">
-                <ScalarProperty Name="financialReportID" ColumnName="financialReportID" />
-                <ScalarProperty Name="totalOfferings" ColumnName="totalOfferings" />
-                <ScalarProperty Name="totalExpenditures" ColumnName="totalExpenditures" />
-                <ScalarProperty Name="summary" ColumnName="summary" />
-                <ScalarProperty Name="monthID" ColumnName="monthID" />
-                <ScalarProperty Name="year" ColumnName="year" />
                 <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
                 <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
               </MappingFragment>

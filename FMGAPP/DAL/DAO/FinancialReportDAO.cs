@@ -28,7 +28,7 @@ namespace FMGAPP.DAL.DAO
             {                
                 yearsCollection.Add(item.year);                
             }
-            years = yearsCollection.Distinct().ToList();
+            years = yearsCollection.Distinct().OrderByDescending(year => year).ToList();
             foreach (var yearItem in years)
             {
                 var OfferingMonth = db.OFFERINGs.Where(x => x.isDeleted == false && x.year == yearItem).ToList();
@@ -36,7 +36,7 @@ namespace FMGAPP.DAL.DAO
                 {
                     monthIDCollection.Add(item.monthID);
                 }
-                monthIDs = monthIDCollection.Distinct().ToList();
+                monthIDs = monthIDCollection.Distinct().OrderByDescending(monthID => monthID).ToList();
                 monthIDCollection.Clear();
                 foreach (var monthItem in monthIDs)
                 {
@@ -83,7 +83,7 @@ namespace FMGAPP.DAL.DAO
             {
                 yearsCollection.Add(item.year);
             }
-            years = yearsCollection.Distinct().ToList();
+            years = yearsCollection.Distinct().OrderByDescending(year => year).ToList();
             foreach (var yearItem in years)
             {
                 FinancialReportDetailDTO dto = new FinancialReportDetailDTO();

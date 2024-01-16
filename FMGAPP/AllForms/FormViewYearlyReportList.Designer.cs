@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtYear = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.txtTotalExpenditure = new System.Windows.Forms.TextBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.rbLessExpenditure = new System.Windows.Forms.RadioButton();
             this.rbEqualExpenditure = new System.Windows.Forms.RadioButton();
             this.rbMoreExpenditure = new System.Windows.Forms.RadioButton();
-            this.txtTotalExpenditure = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtYear = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.rbLessOffering = new System.Windows.Forms.RadioButton();
             this.rbEqualOffering = new System.Windows.Forms.RadioButton();
@@ -86,23 +86,23 @@
             // dataGridView1
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 128);
             this.dataGridView1.Name = "dataGridView1";
@@ -131,28 +131,6 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(794, 44);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(630, 5);
-            this.label3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 21);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Year";
-            // 
-            // txtYear
-            // 
-            this.txtYear.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtYear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtYear.Location = new System.Drawing.Point(679, 3);
-            this.txtYear.Name = "txtYear";
-            this.txtYear.Size = new System.Drawing.Size(112, 29);
-            this.txtYear.TabIndex = 1;
-            this.txtYear.TextChanged += new System.EventHandler(this.txtYear_TextChanged);
-            // 
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.SeaGreen;
@@ -168,6 +146,15 @@
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtTotalExpenditure
+            // 
+            this.txtTotalExpenditure.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtTotalExpenditure.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalExpenditure.Location = new System.Drawing.Point(163, 3);
+            this.txtTotalExpenditure.Name = "txtTotalExpenditure";
+            this.txtTotalExpenditure.Size = new System.Drawing.Size(120, 29);
+            this.txtTotalExpenditure.TabIndex = 1;
             // 
             // btnClear
             // 
@@ -223,7 +210,7 @@
             this.rbLessExpenditure.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbLessExpenditure.Location = new System.Drawing.Point(3, 3);
             this.rbLessExpenditure.Name = "rbLessExpenditure";
-            this.rbLessExpenditure.Size = new System.Drawing.Size(59, 25);
+            this.rbLessExpenditure.Size = new System.Drawing.Size(74, 26);
             this.rbLessExpenditure.TabIndex = 0;
             this.rbLessExpenditure.TabStop = true;
             this.rbLessExpenditure.Text = "Less";
@@ -236,7 +223,7 @@
             this.rbEqualExpenditure.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbEqualExpenditure.Location = new System.Drawing.Point(83, 3);
             this.rbEqualExpenditure.Name = "rbEqualExpenditure";
-            this.rbEqualExpenditure.Size = new System.Drawing.Size(71, 25);
+            this.rbEqualExpenditure.Size = new System.Drawing.Size(74, 26);
             this.rbEqualExpenditure.TabIndex = 0;
             this.rbEqualExpenditure.TabStop = true;
             this.rbEqualExpenditure.Text = "Equal";
@@ -249,20 +236,11 @@
             this.rbMoreExpenditure.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbMoreExpenditure.Location = new System.Drawing.Point(163, 3);
             this.rbMoreExpenditure.Name = "rbMoreExpenditure";
-            this.rbMoreExpenditure.Size = new System.Drawing.Size(68, 25);
+            this.rbMoreExpenditure.Size = new System.Drawing.Size(74, 26);
             this.rbMoreExpenditure.TabIndex = 0;
             this.rbMoreExpenditure.TabStop = true;
             this.rbMoreExpenditure.Text = "More";
             this.rbMoreExpenditure.UseVisualStyleBackColor = true;
-            // 
-            // txtTotalExpenditure
-            // 
-            this.txtTotalExpenditure.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTotalExpenditure.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalExpenditure.Location = new System.Drawing.Point(163, 3);
-            this.txtTotalExpenditure.Name = "txtTotalExpenditure";
-            this.txtTotalExpenditure.Size = new System.Drawing.Size(120, 29);
-            this.txtTotalExpenditure.TabIndex = 1;
             // 
             // label2
             // 
@@ -296,6 +274,28 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(794, 44);
             this.tableLayoutPanel4.TabIndex = 3;
+            // 
+            // txtYear
+            // 
+            this.txtYear.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtYear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtYear.Location = new System.Drawing.Point(679, 3);
+            this.txtYear.Name = "txtYear";
+            this.txtYear.Size = new System.Drawing.Size(112, 29);
+            this.txtYear.TabIndex = 1;
+            this.txtYear.TextChanged += new System.EventHandler(this.txtYear_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(630, 5);
+            this.label3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 21);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Year";
             // 
             // tableLayoutPanel6
             // 

@@ -12,6 +12,24 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\user\source\repos\FMGAPP\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>FMGAPP</ProductName>
+    <PublisherName>Dan-Obu Isoboye Vincent</PublisherName>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +49,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Martz90-Hex-Calculator.512.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -68,6 +89,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllForms\FormChangeLoginInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllForms\FormChangeLoginInfo.Designer.cs">
+      <DependentUpon>FormChangeLoginInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AllForms\FormDeletedData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllForms\FormDeletedData.Designer.cs">
+      <DependentUpon>FormDeletedData.cs</DependentUpon>
+    </Compile>
     <Compile Include="AllForms\FormDocumentImage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,11 +221,13 @@
     <Compile Include="AllForms\FormViewYearlyReportList.Designer.cs">
       <DependentUpon>FormViewYearlyReportList.cs</DependentUpon>
     </Compile>
+    <Compile Include="BLL\DeletedDataBLL.cs" />
     <Compile Include="BLL\ExpenditureBLL.cs" />
     <Compile Include="BLL\ExpenditureTitleBLL.cs" />
     <Compile Include="BLL\FinancialReportBLL.cs" />
     <Compile Include="BLL\IBLL.cs" />
     <Compile Include="BLL\ImageDocumentBLL.cs" />
+    <Compile Include="BLL\LoginBLL.cs" />
     <Compile Include="BLL\MonthBLL.cs" />
     <Compile Include="BLL\OfferingBLL.cs" />
     <Compile Include="BLL\OtherDocumentsBLL.cs" />
@@ -202,6 +237,7 @@
     <Compile Include="DAL\DAO\FMGContext.cs" />
     <Compile Include="DAL\DAO\IDAO.cs" />
     <Compile Include="DAL\DAO\ImageDocumentDAO.cs" />
+    <Compile Include="DAL\DAO\LoginDAO.cs" />
     <Compile Include="DAL\DAO\MonthDAO.cs" />
     <Compile Include="DAL\DAO\OfferingDAO.cs" />
     <Compile Include="DAL\DAO\OtherDocumentsDAO.cs" />
@@ -220,6 +256,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\DTO\DeletedDataDTO.cs" />
     <Compile Include="DAL\DTO\ExpenditureDetailDTO.cs" />
     <Compile Include="DAL\DTO\ExpenditureDTO.cs" />
     <Compile Include="DAL\DTO\ExpenditureTitleDetailDTO.cs" />
@@ -228,6 +265,8 @@
     <Compile Include="DAL\DTO\FinancialReportDTO.cs" />
     <Compile Include="DAL\DTO\ImageDocumentDetailDTO.cs" />
     <Compile Include="DAL\DTO\ImageDocumentDTO.cs" />
+    <Compile Include="DAL\DTO\LoginDetailDTO.cs" />
+    <Compile Include="DAL\DTO\LoginDTO.cs" />
     <Compile Include="DAL\DTO\MonthDetailDTO.cs" />
     <Compile Include="DAL\DTO\MonthDTO.cs" />
     <Compile Include="DAL\DTO\OfferingsDetailDTO.cs" />
@@ -238,9 +277,6 @@
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\EXPENDITURE_TITLE.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\FINANCIAL_REPORT.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\IMAGE_DOCUMENT.cs">
@@ -268,6 +304,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadFiles.cs" />
+    <EmbeddedResource Include="AllForms\FormChangeLoginInfo.resx">
+      <DependentUpon>FormChangeLoginInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AllForms\FormDeletedData.resx">
+      <DependentUpon>FormDeletedData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AllForms\FormDocumentImage.resx">
       <DependentUpon>FormDocumentImage.cs</DependentUpon>
     </EmbeddedResource>
@@ -362,18 +404,30 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="DAL\DataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DataModel.Context.cs</LastGenOutput>
       <DependentUpon>DataModel.edmx</DependentUpon>
+      <LastGenOutput>DataModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="DAL\DataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DataModel.edmx</DependentUpon>
       <LastGenOutput>DataModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Martz90-Hex-Calculator.512.ico" />
     <None Include="Resources\fileImage.png" />
   </ItemGroup>
   <ItemGroup>

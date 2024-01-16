@@ -35,7 +35,6 @@ namespace FMGAPP.AllForms
             dto = bll.Select();
             cmbMonth.DataSource = dto.Months;
             General.ComboBoxProps(cmbMonth, "MonthName", "MonthID");
-            
 
             dataGridView1.DataSource = dto.FinancialReports;
             dataGridView1.Columns[0].Visible = false;
@@ -47,7 +46,9 @@ namespace FMGAPP.AllForms
             dataGridView1.Columns[6].HeaderText = "Total Balance";
             dataGridView1.Columns[7].Visible = false;
             dataGridView1.Columns[8].HeaderText = "Month";
+            dataGridView1.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[9].HeaderText = "Year";
+            dataGridView1.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
         
 

@@ -13,10 +13,10 @@ namespace FMGAPP.DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FMGEntities : DbContext
+    public partial class FMGEntities1 : DbContext
     {
-        public FMGEntities()
-            : base("name=FMGEntities")
+        public FMGEntities1()
+            : base("name=FMGEntities1")
         {
         }
     
@@ -27,7 +27,6 @@ namespace FMGAPP.DAL
     
         public virtual DbSet<EXPENDITURE> EXPENDITUREs { get; set; }
         public virtual DbSet<EXPENDITURE_TITLE> EXPENDITURE_TITLE { get; set; }
-        public virtual DbSet<FINANCIAL_REPORT> FINANCIAL_REPORT { get; set; }
         public virtual DbSet<IMAGE_DOCUMENT> IMAGE_DOCUMENT { get; set; }
         public virtual DbSet<LOGIN> LOGINs { get; set; }
         public virtual DbSet<MONTH> MONTHs { get; set; }

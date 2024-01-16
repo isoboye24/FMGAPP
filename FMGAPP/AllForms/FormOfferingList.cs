@@ -78,9 +78,12 @@ namespace FMGAPP.AllForms
             dataGridView1.Columns[2].HeaderText = "Offerings";
             dataGridView1.Columns[3].Visible = false;
             dataGridView1.Columns[4].HeaderText = "Day";
+            dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].HeaderText = "Month";
+            dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[7].HeaderText = "Year";
+            dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
         private void ClearFilters()
         {

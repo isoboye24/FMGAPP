@@ -19,10 +19,16 @@ namespace FMGAPP.BLL
             document.documentImageID = entity.DocumentImageID;
             return dao.Delete(document);
         }
+        public bool DeletePermanently(ImageDocumentDetailDTO entity)
+        {
+            IMAGE_DOCUMENT document = new IMAGE_DOCUMENT();
+            document.documentImageID = entity.DocumentImageID;
+            return dao.DeletePermanently(document);
+        }
 
         public bool GetBack(ImageDocumentDetailDTO entity)
         {
-            throw new NotImplementedException();
+            return dao.GetBack(entity.DocumentImageID);
         }
 
         public bool Insert(ImageDocumentDetailDTO entity)

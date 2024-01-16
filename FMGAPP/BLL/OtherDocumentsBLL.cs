@@ -19,10 +19,16 @@ namespace FMGAPP.BLL
             document.documentTextID = entity.DocumentID;
             return dao.Delete(document);
         }
+        public bool DeletePermanently(OtherDocumentsDetailDTO entity)
+        {
+            TEXT_DOCUMENT document = new TEXT_DOCUMENT();
+            document.documentTextID = entity.DocumentID;
+            return dao.DeletePermanently(document);
+        }
 
         public bool GetBack(OtherDocumentsDetailDTO entity)
         {
-            throw new NotImplementedException();
+            return dao.GetBack(entity.DocumentID);
         }
 
         public bool Insert(OtherDocumentsDetailDTO entity)

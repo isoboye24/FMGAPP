@@ -105,11 +105,12 @@ namespace FMGAPP
         {
             DisableButton();
             leftBorderBtn.Visible = false;
-            labelTitleChildForm.Text = "Dashboard";
+            labelTitleChildForm.Text = "Record Keeping App";
         }
         private void FormDashboard_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
+            btnLogout.Visible = false;
             panelExpenditure.Visible = false;
             ButtonLocation(btnFinancialReports, 1, 219);
             PanelLocation(panelFinancialReport, 1, 260);
@@ -310,6 +311,14 @@ namespace FMGAPP
             OpenChildForm(new FormDocumentOtherList());
             HideSubmenu(panelDocumentDropdown);
         }
+        private void btnDeletedData_Click(object sender, EventArgs e)
+        {
+            buttonWasClicked = true;
+            OpenChildForm(new FormDeletedData());
+            HideSubmenu(panelDocumentDropdown);
+            HideSubmenu(panelFinancialReport);
+            HideSubmenu(panelExpenditure);
+        }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
@@ -349,5 +358,7 @@ namespace FMGAPP
             ButtonLocation(btnDocuments, 1, 264);
             PanelLocation(panelDocumentDropdown, 1, 303);
         }
+
+        
     }
 }

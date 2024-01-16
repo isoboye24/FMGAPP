@@ -20,10 +20,16 @@ namespace FMGAPP.BLL
             expenditure.expenditureID = entity.ExpenditureID;
             return dao.Delete(expenditure);
         }
+        public bool DeletePermanently(ExpenditureDetailDTO entity)
+        {
+            EXPENDITURE expenditure = new EXPENDITURE();
+            expenditure.expenditureID = entity.ExpenditureID;
+            return dao.DeletePermanently(expenditure);
+        }
 
         public bool GetBack(ExpenditureDetailDTO entity)
         {
-            throw new NotImplementedException();
+            return dao.GetBack(entity.ExpenditureTitleID);
         }
 
         public bool Insert(ExpenditureDetailDTO entity)

@@ -25,9 +25,35 @@ namespace FMGAPP.DAL.DAO
             }            
         }
 
+        public bool DeletePermanently(TEXT_DOCUMENT entity)
+        {
+            try
+            {
+                TEXT_DOCUMENT document = db.TEXT_DOCUMENT.First(x => x.documentTextID == entity.documentTextID);
+                db.TEXT_DOCUMENT.Remove(document);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public bool GetBack(int ID)
         {
-            throw new NotImplementedException();
+            try
+            {
+                TEXT_DOCUMENT document = db.TEXT_DOCUMENT.First(x => x.documentTextID == ID);
+                document.isDeleted = false;
+                document.deletedDate = null;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public bool Insert(TEXT_DOCUMENT entity)
@@ -82,6 +108,46 @@ namespace FMGAPP.DAL.DAO
                 throw ex;
             }
         }
+
+        public List<OtherDocumentsDetailDTO> Select(bool isDeleted)
+        {
+            try
+            {
+                List<OtherDocumentsDetailDTO> documents = new List<OtherDocumentsDetailDTO>();
+                var list = (from t in db.TEXT_DOCUMENT.Where(x => x.isDeleted == isDeleted)
+                            join m in db.MONTHs on t.monthID equals m.monthID
+                            select new
+                            {
+                                documentID = t.documentTextID,
+                                documentName = t.documentName,
+                                documentType = t.documentType,
+                                documentPath = t.documentPath,
+                                day = t.day,
+                                monthID = t.monthID,
+                                monthName = m.monthName,
+                                year = t.year
+                            }).OrderByDescending(x => x.year).ThenByDescending(x => x.monthID).ThenByDescending(x => x.day).ThenBy(x => x.documentName).ToList();
+                foreach (var item in list)
+                {
+                    OtherDocumentsDetailDTO dto = new OtherDocumentsDetailDTO();
+                    dto.DocumentID = item.documentID;
+                    dto.DocumentName = item.documentName;
+                    dto.DocumentPath = item.documentPath;
+                    dto.DocumentType = item.documentType;
+                    dto.Day = item.day;
+                    dto.MonthID = item.monthID;
+                    dto.MonthName = item.monthName;
+                    dto.Year = item.year;
+                    documents.Add(dto);
+                }
+                return documents;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public List<int> SelectOnlyYears()
         {
             try
