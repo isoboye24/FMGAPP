@@ -32,6 +32,9 @@ namespace FMGAPP.AllForms
 
         private void FormViewOtherDocument_Load(object sender, EventArgs e)
         {
+            txtDocumentContent.Font = new Font("Segoe UI", 18, FontStyle.Bold);            
+            btnClose.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+
             txtDocumentContent.Multiline = true;
             txtDocumentContent.ScrollBars = RichTextBoxScrollBars.Vertical;
             txtDocumentContent.SelectionAlignment = HorizontalAlignment.Left;

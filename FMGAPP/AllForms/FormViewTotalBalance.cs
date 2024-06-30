@@ -20,6 +20,7 @@ namespace FMGAPP.AllForms
         FinancialReportBLL bll = new FinancialReportBLL();
         private void FormViewTotalBalance_Load(object sender, EventArgs e)
         {
+            labelHeading.Font = new Font("Segoe UI", 18, FontStyle.Bold);
             labelHeading.Text = "Overall Total Balance Report";
             labelOfferingAmount.Text = "€ " + bll.TotalOffering();
             labelExpenditureAmount.Text = "€ " + bll.TotalExpenditures();

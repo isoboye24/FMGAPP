@@ -33,12 +33,14 @@ namespace FMGAPP.AllForms
         public OfferingsDetailDTO detail = new OfferingsDetailDTO();
         public bool isEdit = false;
         public bool isView = false;
+        public string offeringStatusString;
+        public string labelTitleString;
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (txtOffering.Text.Trim() == "")
             {
                 MessageBox.Show("Enter offering");
-            }
+            }            
             else
             {
                 if (!isEdit)
@@ -46,9 +48,20 @@ namespace FMGAPP.AllForms
                     OfferingsDetailDTO offering = new OfferingsDetailDTO();
                     offering.Offering = Convert.ToDecimal(txtOffering.Text);
                     offering.Summary = txtSummary.Text;
+                    if (offeringStatusString == "Offline")
+                    {
+                        offering.OfferingStatusID = 5;
+                    }
+                    else
+                    {
+                        offering.OfferingStatusID = 6;
+                    }
                     offering.Day = dateTimePickerOfferingDate.Value.Day;
                     offering.MonthID = dateTimePickerOfferingDate.Value.Month;
                     offering.Year = dateTimePickerOfferingDate.Value.Year;
+                    offering.OfferingDate = dateTimePickerOfferingDate.Value;
+                    labelTitle.Text = labelTitleString;
+                    labelOffeingStatus.Text = offeringStatusString;                    
                     if (bll.Insert(offering))
                     {
                         MessageBox.Show("Offering was added");
@@ -59,7 +72,7 @@ namespace FMGAPP.AllForms
                 }
                 else if(isEdit)
                 {
-                    if (detail.Offering.ToString() == txtOffering.Text.Trim() && detail.Summary==txtSummary.Text.Trim() && Convert.ToDateTime(detail.MonthID + "/" + detail.Day + "/" + detail.Year) == dateTimePickerOfferingDate.Value)
+                    if (detail.Offering.ToString() == txtOffering.Text.Trim() && detail.Summary==txtSummary.Text.Trim() && detail.OfferingDate == dateTimePickerOfferingDate.Value)
                     {
                         MessageBox.Show("There is no change");
                     }
@@ -67,9 +80,11 @@ namespace FMGAPP.AllForms
                     {
                         detail.Offering = Convert.ToDecimal(txtOffering.Text); 
                         detail.Summary = txtSummary.Text;
+                        detail.OfferingStatusID = detail.OfferingStatusID;
                         detail.Day = dateTimePickerOfferingDate.Value.Day;
                         detail.MonthID = dateTimePickerOfferingDate.Value.Month;
                         detail.Year = dateTimePickerOfferingDate.Value.Year;
+                        detail.OfferingDate = dateTimePickerOfferingDate.Value;
                         if (bll.Update(detail))
                         {
                             MessageBox.Show("Offering was updated");
@@ -87,11 +102,24 @@ namespace FMGAPP.AllForms
 
         private void FormOffering_Load(object sender, EventArgs e)
         {
+            labelTitle.Font = new Font("Segoe UI", 18, FontStyle.Bold);
+            dateTimePickerOfferingDate.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            txtOffering.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            txtSummary.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            labelViewDate.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            label2.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            label4.Font = new Font("Segoe UI", 12, FontStyle.Bold);            
+            btnClose.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnSave.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+
+            labelTitle.Text = labelTitleString;
+            labelOffeingStatus.Text = offeringStatusString.ToUpper();
+
             if (isEdit)
             {
                 txtOffering.Text = detail.Offering.ToString();
                 txtSummary.Text = detail.Summary;
-                dateTimePickerOfferingDate.Value = Convert.ToDateTime(detail.MonthID + "/" + detail.Day + "/" + detail.Year);
+                dateTimePickerOfferingDate.Value = detail.OfferingDate;
             }
             if (isView)
             {

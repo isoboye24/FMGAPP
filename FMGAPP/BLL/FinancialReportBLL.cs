@@ -20,10 +20,23 @@ namespace FMGAPP.BLL
             dto.FinancialReports = dao.Select();
             return dto;
         }
+        public FinancialReportDTO Select(int status)
+        {
+            FinancialReportDTO dto = new FinancialReportDTO();
+            dto.Months = monthDAO.Select();
+            dto.FinancialReports = dao.SelectMonthlyReportsWithStatus(status);
+            return dto;
+        }
         public FinancialReportDTO SelectYearlyReport()
         {
             FinancialReportDTO dto = new FinancialReportDTO();
             dto.FinancialReports = dao.SelectYearlyReport();
+            return dto;
+        }
+        public FinancialReportDTO SelectYearlyReport(int status)
+        {
+            FinancialReportDTO dto = new FinancialReportDTO();
+            dto.FinancialReports = dao.SelectYearlyReport(status);
             return dto;
         }
         public decimal TotalOffering()

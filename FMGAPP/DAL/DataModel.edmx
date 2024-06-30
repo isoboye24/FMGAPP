@@ -15,9 +15,10 @@
           <Property Name="day" Type="int" Nullable="false" />
           <Property Name="monthID" Type="int" Nullable="false" />
           <Property Name="year" Type="int" Nullable="false" />
+          <Property Name="expenditureTitleID" Type="int" Nullable="false" />
           <Property Name="isDeleted" Type="bit" Nullable="false" />
           <Property Name="deletedDate" Type="date" />
-          <Property Name="expenditureTitleID" Type="int" Nullable="false" />
+          <Property Name="expenditureDate" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="EXPENDITURE_TITLE">
           <Key>
@@ -69,6 +70,17 @@
           <Property Name="year" Type="int" Nullable="false" />
           <Property Name="isDeleted" Type="bit" Nullable="false" />
           <Property Name="deletedDate" Type="date" />
+          <Property Name="offeringDate" Type="date" Nullable="false" />
+          <Property Name="offeringStatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OFFERING_STATUS">
+          <Key>
+            <PropertyRef Name="offeringStatusID" />
+          </Key>
+          <Property Name="offeringStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="offeringStatus" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+          <Property Name="deletedDate" Type="date" />
         </EntityType>
         <EntityType Name="TEXT_DOCUMENT">
           <Key>
@@ -91,6 +103,7 @@
           <EntitySet Name="LOGIN" EntityType="Self.LOGIN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MONTH" EntityType="Self.MONTH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OFFERING" EntityType="Self.OFFERING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OFFERING_STATUS" EntityType="Self.OFFERING_STATUS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TEXT_DOCUMENT" EntityType="Self.TEXT_DOCUMENT" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
@@ -108,9 +121,10 @@
           <Property Name="day" Type="Int32" Nullable="false" />
           <Property Name="monthID" Type="Int32" Nullable="false" />
           <Property Name="year" Type="Int32" Nullable="false" />
+          <Property Name="expenditureTitleID" Type="Int32" Nullable="false" />
           <Property Name="isDeleted" Type="Boolean" Nullable="false" />
           <Property Name="deletedDate" Type="DateTime" Precision="0" />
-          <Property Name="expenditureTitleID" Type="Int32" Nullable="false" />
+          <Property Name="expenditureDate" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="EXPENDITURE_TITLE">
           <Key>
@@ -162,6 +176,17 @@
           <Property Name="year" Type="Int32" Nullable="false" />
           <Property Name="isDeleted" Type="Boolean" Nullable="false" />
           <Property Name="deletedDate" Type="DateTime" Precision="0" />
+          <Property Name="offeringDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="offeringStatusID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OFFERING_STATUS">
+          <Key>
+            <PropertyRef Name="offeringStatusID" />
+          </Key>
+          <Property Name="offeringStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="offeringStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="deletedDate" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="TEXT_DOCUMENT">
           <Key>
@@ -177,13 +202,14 @@
           <Property Name="isDeleted" Type="Boolean" Nullable="false" />
           <Property Name="deletedDate" Type="DateTime" Precision="0" />
         </EntityType>
-        <EntityContainer Name="FMGEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="FMGEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="EXPENDITUREs" EntityType="Self.EXPENDITURE" />
           <EntitySet Name="EXPENDITURE_TITLE" EntityType="Self.EXPENDITURE_TITLE" />
           <EntitySet Name="IMAGE_DOCUMENT" EntityType="Self.IMAGE_DOCUMENT" />
           <EntitySet Name="LOGINs" EntityType="Self.LOGIN" />
           <EntitySet Name="MONTHs" EntityType="Self.MONTH" />
           <EntitySet Name="OFFERINGs" EntityType="Self.OFFERING" />
+          <EntitySet Name="OFFERING_STATUS" EntityType="Self.OFFERING_STATUS" />
           <EntitySet Name="TEXT_DOCUMENT" EntityType="Self.TEXT_DOCUMENT" />
         </EntityContainer>
       </Schema>
@@ -191,7 +217,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FMGModelStoreContainer" CdmEntityContainer="FMGEntities1">
+        <EntityContainerMapping StorageEntityContainer="FMGModelStoreContainer" CdmEntityContainer="FMGEntities">
           <EntitySetMapping Name="EXPENDITUREs">
             <EntityTypeMapping TypeName="FMGModel.EXPENDITURE">
               <MappingFragment StoreEntitySet="EXPENDITURE">
@@ -201,9 +227,10 @@
                 <ScalarProperty Name="day" ColumnName="day" />
                 <ScalarProperty Name="monthID" ColumnName="monthID" />
                 <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="expenditureTitleID" ColumnName="expenditureTitleID" />
                 <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
                 <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
-                <ScalarProperty Name="expenditureTitleID" ColumnName="expenditureTitleID" />
+                <ScalarProperty Name="expenditureDate" ColumnName="expenditureDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -258,6 +285,18 @@
                 <ScalarProperty Name="day" ColumnName="day" />
                 <ScalarProperty Name="monthID" ColumnName="monthID" />
                 <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+                <ScalarProperty Name="offeringDate" ColumnName="offeringDate" />
+                <ScalarProperty Name="offeringStatusID" ColumnName="offeringStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OFFERING_STATUS">
+            <EntityTypeMapping TypeName="FMGModel.OFFERING_STATUS">
+              <MappingFragment StoreEntitySet="OFFERING_STATUS">
+                <ScalarProperty Name="offeringStatusID" ColumnName="offeringStatusID" />
+                <ScalarProperty Name="offeringStatus" ColumnName="offeringStatus" />
                 <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
                 <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
               </MappingFragment>

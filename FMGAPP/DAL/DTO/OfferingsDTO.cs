@@ -10,5 +10,6 @@ namespace FMGAPP.DAL.DTO
     {
         public List<OfferingsDetailDTO> Offerings { get; set; }
         public List<MonthDetailDTO> Months { get; set; }
+        public List<OfferingStatusDetailDTO> OfferingStatus { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,7 +14,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\user\source\repos\FMGAPP\</PublishUrl>
+    <PublishUrl>C:\Users\samay\source\repos\FMGAPP\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,13 +24,16 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ProductName>FMGAPP</ProductName>
+    <ProductName>FMG APP</ProductName>
     <PublisherName>Dan-Obu Isoboye Vincent</PublisherName>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -53,15 +57,31 @@
   <PropertyGroup>
     <ApplicationIcon>Martz90-Hex-Calculator.512.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>10A9FA2CD2D442F9349A2FA1CEA4C24A26529E4E</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>FMGAPP_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="FontAwesome.Sharp, Version=6.3.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.Sharp.6.3.0\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -70,6 +90,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -81,11 +102,11 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
-    <Reference Include="Xceed.Document.NET, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\DocX.2.5.0\lib\net40\Xceed.Document.NET.dll</HintPath>
+    <Reference Include="Xceed.Document.NET, Version=3.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.3.0.0\lib\net40\Xceed.Document.NET.dll</HintPath>
     </Reference>
-    <Reference Include="Xceed.Words.NET, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\DocX.2.5.0\lib\net40\Xceed.Words.NET.dll</HintPath>
+    <Reference Include="Xceed.Words.NET, Version=3.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.3.0.0\lib\net40\Xceed.Words.NET.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -137,17 +158,17 @@
     <Compile Include="AllForms\FormExpenditureList.Designer.cs">
       <DependentUpon>FormExpenditureList.cs</DependentUpon>
     </Compile>
-    <Compile Include="AllForms\FormExpenditureTitle.cs">
+    <Compile Include="AllForms\FormAddSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AllForms\FormExpenditureTitle.Designer.cs">
-      <DependentUpon>FormExpenditureTitle.cs</DependentUpon>
+    <Compile Include="AllForms\FormAddSettings.Designer.cs">
+      <DependentUpon>FormAddSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="AllForms\FormExpenditureTitleList.cs">
+    <Compile Include="AllForms\FormSettingsList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AllForms\FormExpenditureTitleList.Designer.cs">
-      <DependentUpon>FormExpenditureTitleList.cs</DependentUpon>
+    <Compile Include="AllForms\FormSettingsList.Designer.cs">
+      <DependentUpon>FormSettingsList.cs</DependentUpon>
     </Compile>
     <Compile Include="AllForms\FormViewImageDocument.cs">
       <SubType>Form</SubType>
@@ -173,11 +194,11 @@
     <Compile Include="AllForms\FormViewMonthlyReport.Designer.cs">
       <DependentUpon>FormViewMonthlyReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="AllForms\FormFinancialReportList.cs">
+    <Compile Include="AllForms\FormMonthlyReports.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AllForms\FormFinancialReportList.Designer.cs">
-      <DependentUpon>FormFinancialReportList.cs</DependentUpon>
+    <Compile Include="AllForms\FormMonthlyReports.Designer.cs">
+      <DependentUpon>FormMonthlyReports.cs</DependentUpon>
     </Compile>
     <Compile Include="AllForms\FormLogin.cs">
       <SubType>Form</SubType>
@@ -225,21 +246,25 @@
     <Compile Include="BLL\ExpenditureBLL.cs" />
     <Compile Include="BLL\ExpenditureTitleBLL.cs" />
     <Compile Include="BLL\FinancialReportBLL.cs" />
+    <Compile Include="BLL\GraphBLL.cs" />
     <Compile Include="BLL\IBLL.cs" />
     <Compile Include="BLL\ImageDocumentBLL.cs" />
     <Compile Include="BLL\LoginBLL.cs" />
     <Compile Include="BLL\MonthBLL.cs" />
     <Compile Include="BLL\OfferingBLL.cs" />
+    <Compile Include="BLL\OfferingStatusBLL.cs" />
     <Compile Include="BLL\OtherDocumentsBLL.cs" />
     <Compile Include="DAL\DAO\ExpenditureDAO.cs" />
     <Compile Include="DAL\DAO\ExpenditureTitleDAO.cs" />
     <Compile Include="DAL\DAO\FinancialReportDAO.cs" />
     <Compile Include="DAL\DAO\FMGContext.cs" />
+    <Compile Include="DAL\DAO\GraphDAO.cs" />
     <Compile Include="DAL\DAO\IDAO.cs" />
     <Compile Include="DAL\DAO\ImageDocumentDAO.cs" />
     <Compile Include="DAL\DAO\LoginDAO.cs" />
     <Compile Include="DAL\DAO\MonthDAO.cs" />
     <Compile Include="DAL\DAO\OfferingDAO.cs" />
+    <Compile Include="DAL\DAO\OfferingStatusDAO.cs" />
     <Compile Include="DAL\DAO\OtherDocumentsDAO.cs" />
     <Compile Include="DAL\DataModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -263,6 +288,8 @@
     <Compile Include="DAL\DTO\ExpenditureTitleDTO.cs" />
     <Compile Include="DAL\DTO\FinancialReportDetailDTO.cs" />
     <Compile Include="DAL\DTO\FinancialReportDTO.cs" />
+    <Compile Include="DAL\DTO\GraphDetailDTO.cs" />
+    <Compile Include="DAL\DTO\GraphDTO.cs" />
     <Compile Include="DAL\DTO\ImageDocumentDetailDTO.cs" />
     <Compile Include="DAL\DTO\ImageDocumentDTO.cs" />
     <Compile Include="DAL\DTO\LoginDetailDTO.cs" />
@@ -271,6 +298,8 @@
     <Compile Include="DAL\DTO\MonthDTO.cs" />
     <Compile Include="DAL\DTO\OfferingsDetailDTO.cs" />
     <Compile Include="DAL\DTO\OfferingsDTO.cs" />
+    <Compile Include="DAL\DTO\OfferingStatusDetailDTO.cs" />
+    <Compile Include="DAL\DTO\OfferingStatusDTO.cs" />
     <Compile Include="DAL\DTO\OtherDocumentDTO.cs" />
     <Compile Include="DAL\DTO\OtherDocumentsDetailDTO.cs" />
     <Compile Include="DAL\EXPENDITURE.cs">
@@ -291,9 +320,13 @@
     <Compile Include="DAL\OFFERING.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\OFFERING_STATUS.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\TEXT_DOCUMENT.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ExportToExcel.cs" />
     <Compile Include="FormDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -328,11 +361,11 @@
     <EmbeddedResource Include="AllForms\FormExpenditureList.resx">
       <DependentUpon>FormExpenditureList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AllForms\FormExpenditureTitle.resx">
-      <DependentUpon>FormExpenditureTitle.cs</DependentUpon>
+    <EmbeddedResource Include="AllForms\FormAddSettings.resx">
+      <DependentUpon>FormAddSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AllForms\FormExpenditureTitleList.resx">
-      <DependentUpon>FormExpenditureTitleList.cs</DependentUpon>
+    <EmbeddedResource Include="AllForms\FormSettingsList.resx">
+      <DependentUpon>FormSettingsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AllForms\FormViewFinancialTotalBalance.resx">
       <DependentUpon>FormViewFinancialTotalBalance.cs</DependentUpon>
@@ -343,8 +376,8 @@
     <EmbeddedResource Include="AllForms\FormViewMonthlyReport.resx">
       <DependentUpon>FormViewMonthlyReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AllForms\FormFinancialReportList.resx">
-      <DependentUpon>FormFinancialReportList.cs</DependentUpon>
+    <EmbeddedResource Include="AllForms\FormMonthlyReports.resx">
+      <DependentUpon>FormMonthlyReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AllForms\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
@@ -390,6 +423,7 @@
     <None Include="DAL\DataModel.edmx.diagram">
       <DependentUpon>DataModel.edmx</DependentUpon>
     </None>
+    <None Include="FMGAPP_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -433,5 +467,24 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
 </Project>

@@ -35,6 +35,18 @@ namespace FMGAPP.AllForms
         public bool isEdit = false;
         private void FormExpenditure_Load(object sender, EventArgs e)
         {
+            labelTitleChildForm.Font = new Font("Segoe UI", 18, FontStyle.Bold);
+            dateTimePickerSpentDate.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            txtSummary.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            txtAmountSpent.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            cmbExpenditureTitle.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            label1.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            label2.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            label3.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            label4.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnClose.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+            btnSave.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+
             dto = bll.Select();
             cmbExpenditureTitle.DataSource = dto.ExpenditureTitles;
             General.ComboBoxProps(cmbExpenditureTitle, "ExpenditureTitle", "ExpenditureTitleID");
@@ -43,7 +55,7 @@ namespace FMGAPP.AllForms
             {
                 txtAmountSpent.Text = detail.AmountSpent.ToString();
                 txtSummary.Text = detail.Summary;
-                dateTimePickerSpentDate.Value = Convert.ToDateTime(detail.MonthID + "/" + detail.Day + "/" + detail.Year);
+                dateTimePickerSpentDate.Value = detail.ExpenditureDate;
                 cmbExpenditureTitle.SelectedValue = detail.ExpenditureTitleID;
             }
         }
@@ -72,6 +84,7 @@ namespace FMGAPP.AllForms
                     expenditure.Day = dateTimePickerSpentDate.Value.Day;
                     expenditure.MonthID = dateTimePickerSpentDate.Value.Month;
                     expenditure.Year = dateTimePickerSpentDate.Value.Year;
+                    expenditure.ExpenditureDate = dateTimePickerSpentDate.Value;
                     expenditure.ExpenditureTitleID = Convert.ToInt32(cmbExpenditureTitle.SelectedValue);
                     if (bll.Insert(expenditure))
                     {
@@ -84,7 +97,7 @@ namespace FMGAPP.AllForms
                 }
                 else if (isEdit)
                 {
-                    if (Convert.ToDateTime(detail.MonthID + "/" + detail.Day + "/" + detail.Year) == dateTimePickerSpentDate.Value &&
+                    if (detail.ExpenditureDate == dateTimePickerSpentDate.Value &&
                          detail.Summary ==txtSummary.Text.Trim() && detail.AmountSpent == Convert.ToDecimal(txtAmountSpent.Text) && 
                          detail.ExpenditureTitleID == Convert.ToInt32(cmbExpenditureTitle.SelectedValue))
                     {
@@ -97,6 +110,7 @@ namespace FMGAPP.AllForms
                         detail.Day = dateTimePickerSpentDate.Value.Day;
                         detail.MonthID = dateTimePickerSpentDate.Value.Month;
                         detail.Year = dateTimePickerSpentDate.Value.Year;
+                        detail.ExpenditureDate = dateTimePickerSpentDate.Value;
                         detail.ExpenditureTitleID = Convert.ToInt32(cmbExpenditureTitle.SelectedValue);
                         if (bll.Update(detail))
                         {

@@ -30,6 +30,11 @@ namespace FMGAPP.AllForms
         public ImageDocumentDetailDTO detail = new ImageDocumentDetailDTO();
         private void FormViewImageDocument_Load(object sender, EventArgs e)
         {
+            labelTitle.Font = new Font("Segoe UI", 18, FontStyle.Bold);            
+            txtSummary.Font = new Font("Segoe UI", 18, FontStyle.Regular);            
+            labelDate.Font = new Font("Segoe UI", 10, FontStyle.Bold);            
+            btnClose.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+
             txtSummary.Text = detail.Summary;
             labelTitle.Text = detail.DocumentName;
             labelDate.Text = detail.Day + "." + detail.MonthID + "." + detail.Year;

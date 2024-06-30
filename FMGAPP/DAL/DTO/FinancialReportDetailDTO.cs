@@ -18,5 +18,6 @@ namespace FMGAPP.DAL.DTO
         public int MonthID { get; set; }
         public string MonthName { get; set; }
         public int Year { get; set; }
+        public decimal percentage { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace FMGAPP.BLL
         ExpenditureDAO expDAO = new ExpenditureDAO();
         ImageDocumentDAO imageDocDAO = new ImageDocumentDAO();
         OtherDocumentsDAO otherDocsDAO = new OtherDocumentsDAO();
+        OfferingStatusDAO offeringStatusDAO = new OfferingStatusDAO();
         public DeletedDataDTO Select(bool isDeleted)
         {
             DeletedDataDTO dto = new DeletedDataDTO();
@@ -23,6 +24,7 @@ namespace FMGAPP.BLL
             dto.Expenditures = expDAO.Select(isDeleted);
             dto.ImageDocuments = imageDocDAO.Select(isDeleted);
             dto.OtherDocuments = otherDocsDAO.Select(isDeleted);
+            dto.OfferingStatuses = offeringStatusDAO.Select(isDeleted);
             return dto;
         }
     }

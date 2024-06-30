@@ -45,6 +45,15 @@ namespace FMGAPP.AllForms
         LoginDTO dto = new LoginDTO();
         private void FormLogin_Load(object sender, EventArgs e)
         {
+            labelTitleChildForm.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            txtPassword.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            txtUsername.Font = new Font("Segoe UI", 18, FontStyle.Regular);            
+            label1.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            label2.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            linkLabelChangeLoginInfo.Font = new Font("Segoe UI", 10, FontStyle.Bold);            
+            btnClose.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnEnter.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+
             linkLabelChangeLoginInfo.Hide();            
         }
 

@@ -31,11 +31,12 @@ namespace FMGAPP.AllForms
         public FinancialReportDetailDTO detail = new FinancialReportDetailDTO();
         public bool isMonthlyReport = false;
         public bool isYearlyReport = false;
+        public string status;
         private void FormViewMonthlyReport_Load(object sender, EventArgs e)
         {
             if (isMonthlyReport)
             {
-                labelHeading.Text = detail.MonthName + " " + detail.Year + " Balance Report";
+                labelHeading.Text = status + " " + detail.MonthName + " " + detail.Year + " Balance Report";
                 labelOfferingAmount.Text = detail.TotalOfferingsWithCurrency;
                 labelExpenditureAmount.Text = detail.TotalExpendituresWithCurrency;
                 labelBalanceAmount.Text = detail.TotalBalanceWithCurrency;

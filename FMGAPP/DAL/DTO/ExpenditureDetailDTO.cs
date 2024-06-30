@@ -17,6 +17,7 @@ namespace FMGAPP.DAL.DTO
         public string MonthName { get; set; }
         public int Year { get; set; }
         public int ExpenditureTitleID { get; set; }
+        public DateTime ExpenditureDate { get; set; }
         public bool isExpenditureTitleDeleted { get; set; }
     }
 }

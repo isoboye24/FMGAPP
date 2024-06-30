@@ -20,8 +20,9 @@ namespace FMGAPP.DAL
         public int day { get; set; }
         public int monthID { get; set; }
         public int year { get; set; }
+        public int expenditureTitleID { get; set; }
         public bool isDeleted { get; set; }
         public Nullable<System.DateTime> deletedDate { get; set; }
-        public int expenditureTitleID { get; set; }
+        public System.DateTime expenditureDate { get; set; }
     }
 }

@@ -16,5 +16,9 @@ namespace FMGAPP.DAL.DTO
         public int MonthID { get; set; }
         public string MonthName { get; set; }
         public int Year { get; set; }
+        public DateTime OfferingDate { get; set; }
+        public int OfferingStatusID { get; set; }
+        public string OfferingStatus { get; set; }
+        public decimal percentage { get; set; }
     }
 }

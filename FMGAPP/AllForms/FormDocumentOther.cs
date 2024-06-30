@@ -132,6 +132,17 @@ namespace FMGAPP.AllForms
 
         private void FormDocumentOther_Load(object sender, EventArgs e)
         {
+            labelTitleChildForm.Font = new Font("Segoe UI", 18, FontStyle.Bold);
+            txtDocumentName.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            txtDocumentType.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            txtDocumentPath.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            label1.Font = new Font("Segoe UI", 14, FontStyle.Regular);
+            label2.Font = new Font("Segoe UI", 14, FontStyle.Regular);
+            label3.Font = new Font("Segoe UI", 14, FontStyle.Regular);
+            btnBrowse.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+            btnClose.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+            btnSave.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+
             picDocument.Hide();
             if (isEdit)
             {

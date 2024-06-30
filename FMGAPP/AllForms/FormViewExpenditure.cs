@@ -30,6 +30,15 @@ namespace FMGAPP.AllForms
         public ExpenditureDetailDTO detail = new ExpenditureDetailDTO();
         private void FormViewExpenditure_Load(object sender, EventArgs e)
         {
+            labelTitle.Font = new Font("Segoe UI", 18, FontStyle.Bold);
+            txtSummary.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            txtTitle.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            txtAmountSpent.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            label2.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            label3.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            label4.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnClose.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+
             txtAmountSpent.Text = detail.AmountSpent.ToString();
             txtSummary.Text = detail.Summary;
              labelTitle.Text = "Expenditure made on " + detail.Day + "/" + detail.MonthID + "/" + detail.Year;

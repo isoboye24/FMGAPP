@@ -26,7 +26,17 @@ namespace FMGAPP.AllForms
         LoginBLL bll = new LoginBLL();
         private void FormChangeLoginInfo_Load(object sender, EventArgs e)
         {
-
+            txtCurrentPassword.Font = new Font("Segoe UI", 12, FontStyle.Regular);
+            txtCurrentUsername.Font = new Font("Segoe UI", 12, FontStyle.Regular);
+            txtNewPassword.Font = new Font("Segoe UI", 12, FontStyle.Regular);
+            txtNewUsername.Font = new Font("Segoe UI", 12, FontStyle.Regular);
+            label1.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            label2.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            label3.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            label4.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnClose.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnEnter.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            
         }
 
         private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)

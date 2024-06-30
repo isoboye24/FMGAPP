@@ -22,5 +22,7 @@ namespace FMGAPP.DAL
         public int year { get; set; }
         public bool isDeleted { get; set; }
         public Nullable<System.DateTime> deletedDate { get; set; }
+        public System.DateTime offeringDate { get; set; }
+        public int offeringStatusID { get; set; }
     }
 }

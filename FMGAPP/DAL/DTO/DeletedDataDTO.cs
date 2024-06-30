@@ -13,5 +13,6 @@ namespace FMGAPP.DAL.DTO
         public List<ExpenditureDetailDTO> Expenditures { get; set; }
         public List<ImageDocumentDetailDTO> ImageDocuments { get; set; }
         public List<OtherDocumentsDetailDTO> OtherDocuments { get; set; }
+        public List<OfferingStatusDetailDTO> OfferingStatuses { get; set; }
     }
 }

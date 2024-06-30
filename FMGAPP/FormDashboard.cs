@@ -1,15 +1,19 @@
 ﻿using FMGAPP.AllForms;
+using FMGAPP.BLL;
+using FMGAPP.DAL.DTO;
 using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace FMGAPP
 {
@@ -18,6 +22,9 @@ namespace FMGAPP
         private IconButton currentBtn;
         private Panel leftBorderBtn;
         private Form currentChildForm;
+
+        GraphBLL graphBLL = new GraphBLL();
+        GraphDTO graphDTO = new GraphDTO();
         public FormDashboard()
         {
             InitializeComponent();
@@ -101,24 +108,70 @@ namespace FMGAPP
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int IParam);
 
+        string queryOffline = "SELECT MONTH.monthName, SUM(OFFERING.offerings) \r\n" +
+            "FROM OFFERING\r\n" +
+            "JOIN MONTH ON OFFERING.monthID = MONTH.monthID\r\n" +
+            "WHERE OFFERING.year = 2024 AND OFFERING.offeringStatusID = 5 AND OFFERING.isDeleted = 0\r\n" +
+            "GROUP BY MONTH.monthName, OFFERING.monthID\r\n" +
+            "ORDER BY OFFERING.monthID ASC";
+
+        string queryOnline = "SELECT MONTH.monthName, SUM(OFFERING.offerings) \r\n" +
+            "FROM OFFERING\r\n" +
+            "JOIN MONTH ON OFFERING.monthID = MONTH.monthID\r\n" +
+            "WHERE OFFERING.year = 2024 AND OFFERING.offeringStatusID = 6 AND OFFERING.isDeleted = 0\r\n" +
+            "GROUP BY MONTH.monthName, OFFERING.monthID\r\n" +
+            "ORDER BY OFFERING.monthID ASC";
         private void Reset()
         {
             DisableButton();
             leftBorderBtn.Visible = false;
             labelTitleChildForm.Text = "Record Keeping App";
+            General.CreateChart(chartMonOffOffline, queryOffline, SeriesChartType.Column, "Month", "");
+            General.CreateChart(chartMonOffOnline, queryOnline, SeriesChartType.Column, "Month", "");
         }
+        ExpenditureBLL bll = new ExpenditureBLL();
+        OfferingBLL offeringBLL = new OfferingBLL();
+        private void RefreshCards()
+        {
+            label3.Text = ("Expenditures " + General.ConventIntToMonth(DateTime.Today.Month)).ToUpper();
+            labelTotalExpenditureThisMonthOff.Text = "€ " + bll.TotalExpensesThisMonth(DateTime.Today.Month);
+            label8.Text = ("Expenditures " + DateTime.Today.Year).ToUpper();
+            labelTotalExpenditureThisYearOff.Text = "€ " + bll.TotalExpensesThisYear(DateTime.Today.Year);
+            label2.Text = (General.ConventIntToMonth(DateTime.Today.Month) + "'s Offerings").ToUpper();
+            labelTotalOfferingThisMonthOff.Text = "€ " + offeringBLL.TotalOfferingsThisMonth(DateTime.Today.Month, 5);
+            label5.Text = ("Offerings " + DateTime.Today.Year).ToUpper();
+            labelTotalOfferingThisYearOff.Text = "€ " + offeringBLL.TotalOfferingsThisYear(DateTime.Today.Year, 5);
+            label7.Text = (General.ConventIntToMonth(DateTime.Today.Month) + "'s Offerings").ToUpper();
+            labelTotalOfferingThisMonthOn.Text = "€ " + offeringBLL.TotalOfferingsThisMonth(DateTime.Today.Month, 6);
+            label10.Text = ("Offerings " + DateTime.Today.Year).ToUpper();
+            labelTotalOfferingThisYearOn.Text = "€ " + offeringBLL.TotalOfferingsThisYear(DateTime.Today.Year, 6);
+        }
+
         private void FormDashboard_Load(object sender, EventArgs e)
         {
+            RefreshCards();
             this.ControlBox = false;
             btnLogout.Visible = false;
             panelExpenditure.Visible = false;
-            ButtonLocation(btnFinancialReports, 1, 219);
-            PanelLocation(panelFinancialReport, 1, 260);
+            ButtonLocation(btnFinancialReports, 1, 330);
+            PanelLocation(panelFinancialReport, 1, 390);
             panelFinancialReport.Visible = false;
-            ButtonLocation(btnDocuments, 1, 264);
-            PanelLocation(panelDocumentDropdown, 1, 303);
+            ButtonLocation(btnDocuments, 1, 400);
+            PanelLocation(panelDocumentDropdown, 1, 450);
             panelDocumentDropdown.Visible = false;
+
+            graphDTO = graphBLL.GetMonthlyGraphDataWithStatus(5, DateTime.Today.Year);
+            chartMonOffOffline.DataSource = graphDTO.GraphData;
+
+            General.CreateChart(chartMonOffOffline, queryOffline, SeriesChartType.Column, "Month", "");
+            General.CreateChart(chartMonOffOnline, queryOnline, SeriesChartType.Column, "Month", "");
+
+            label16.Text = "OFFLINE MONTHLY OFFERING " + DateTime.Today.Year;
+            label17.Text = "ONLINE MONTHLY OFFERING " + DateTime.Today.Year;
+            label4.Text = "OFFLINE " + DateTime.Today.Year;
+            label6.Text = "ONLINE " + DateTime.Today.Year;
         }
+
         private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -135,8 +188,8 @@ namespace FMGAPP
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            tableLayoutPanelBoard.Controls.Add(childForm);
-            tableLayoutPanelBoard.Tag = childForm;
+            panelDesktop.Controls.Add(childForm);
+            panelDesktop.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
             labelTitleChildForm.Text = childForm.Text;
@@ -178,6 +231,7 @@ namespace FMGAPP
                 currentChildForm.Close();
                 Reset();
             }
+            RefreshCards();
         }
         private void btnOffering_Click(object sender, EventArgs e)
         {
@@ -222,7 +276,7 @@ namespace FMGAPP
         private void btnExpenditureTitle_Click(object sender, EventArgs e)
         {
             buttonWasClicked = true;
-            OpenChildForm(new FormExpenditureTitleList());
+            OpenChildForm(new FormSettingsList());
             HideSubmenu(panelExpenditure);
             if (panelExpenditure.Visible == false)
             {
@@ -252,7 +306,7 @@ namespace FMGAPP
         private void btnMonthlyReport_Click(object sender, EventArgs e)
         {
             buttonWasClicked = true;            
-            OpenChildForm(new FormFinancialReportList());
+            OpenChildForm(new FormMonthlyReports());
             HideSubmenu(panelFinancialReport);
             if (panelFinancialReport.Visible == false)
             {
@@ -336,29 +390,27 @@ namespace FMGAPP
         }
         private void ExpensesOpened()
         {
-            ButtonLocation(btnFinancialReports, 1, 314);
-            PanelLocation(panelFinancialReport, 1, 355);
-            ButtonLocation(btnDocuments, 1, 360);
-            PanelLocation(panelDocumentDropdown, 1, 400);
+            ButtonLocation(btnFinancialReports, 1, 480);
+            PanelLocation(panelFinancialReport, 1, 520);
+            ButtonLocation(btnDocuments, 1, 550);
+            PanelLocation(panelDocumentDropdown, 1, 600);
         }
         private void ExpensesClosed()
         {
-            ButtonLocation(btnFinancialReports, 1, 219);
-            PanelLocation(panelFinancialReport, 1, 260);
-            ButtonLocation(btnDocuments, 1, 264);
-            PanelLocation(panelDocumentDropdown, 1, 303);
+            ButtonLocation(btnFinancialReports, 1, 330);
+            PanelLocation(panelFinancialReport, 1, 380);
+            ButtonLocation(btnDocuments, 1, 400);
+            PanelLocation(panelDocumentDropdown, 1, 450);
         }
         private void FROpened()
         {
-            ButtonLocation(btnDocuments, 1, 409);
-            PanelLocation(panelDocumentDropdown, 1, 448);
+            ButtonLocation(btnDocuments, 1, 620);
+            PanelLocation(panelDocumentDropdown, 1, 660);
         }
         private void FRClosed()
         {
-            ButtonLocation(btnDocuments, 1, 264);
-            PanelLocation(panelDocumentDropdown, 1, 303);
-        }
-
-        
+            ButtonLocation(btnDocuments, 1, 400);
+            PanelLocation(panelDocumentDropdown, 1, 450);
+        }        
     }
 }

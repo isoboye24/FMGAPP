@@ -26,6 +26,15 @@ namespace FMGAPP.BLL
             return dao.DeletePermanently(offering);
         }
 
+        public decimal TotalOfferingsThisMonth(int month, int status)
+        {
+            return dao.TotalOfferingsThisMonth(month, status);
+        }
+        public decimal TotalOfferingsThisYear(int year, int status)
+        {
+            return dao.TotalOfferingsThisYear(year, status);
+        }
+
         public bool GetBack(OfferingsDetailDTO entity)
         {
             return dao.GetBack(entity.OfferingID);
@@ -39,13 +48,20 @@ namespace FMGAPP.BLL
             offering.day = entity.Day;
             offering.monthID = entity.MonthID;
             offering.year = entity.Year;
+            offering.offeringDate = entity.OfferingDate;
+            offering.offeringStatusID = entity.OfferingStatusID;
             return dao.Insert(offering);
         }
 
         public OfferingsDTO Select()
         {
+            throw new NotImplementedException();
+        }
+
+        public OfferingsDTO Select(int statusID)
+        {
             OfferingsDTO dto = new OfferingsDTO();
-            dto.Offerings = dao.Select();
+            dto.Offerings = dao.Select(statusID);
             dto.Months = monthDAO.Select();
             return dto;
         }
@@ -59,6 +75,8 @@ namespace FMGAPP.BLL
             offering.day = entity.Day;
             offering.monthID = entity.MonthID;
             offering.year = entity.Year;
+            offering.offeringDate = entity.OfferingDate;
+            offering.offeringStatusID = entity.OfferingStatusID;
             return dao.Update(offering);
         }
     }

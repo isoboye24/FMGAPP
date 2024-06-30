@@ -56,6 +56,43 @@ namespace FMGAPP.DAL.DAO
             }
         }
 
+        public decimal TotalExpensesThisMonth(int month)
+        {
+            try
+            {
+                List<decimal> expenditures = new List<decimal>();
+                var list = db.EXPENDITUREs.Where(x => x.monthID == month && x.isDeleted == false);                
+                foreach (var item in list )
+                {
+                    expenditures.Add(item.amountSpent);
+                }
+                decimal total = expenditures.Sum();
+                return total;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public decimal TotalExpensesThisYear(int year)
+        {
+            try
+            {
+                List<decimal> expenditures = new List<decimal>();
+                var list = db.EXPENDITUREs.Where(x => x.year == year && x.isDeleted == false);                
+                foreach (var item in list )
+                {
+                    expenditures.Add(item.amountSpent);
+                }
+                decimal total = expenditures.Sum();
+                return total;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public bool Insert(EXPENDITURE entity)
         {
             try
@@ -89,6 +126,8 @@ namespace FMGAPP.DAL.DAO
                                 year = e.year,
                                 expenditureTitleID = e.expenditureTitleID,
                                 expenditureTitle = et.expenditureTitle,
+                                expenditureDate = e.expenditureDate,
+                                isDeleted = e.isDeleted
                             }).OrderByDescending(x => x.year).ThenByDescending(x => x.monthID).ThenByDescending(x => x.day).ToList();
                 foreach (var item in list)
                 {
@@ -100,8 +139,10 @@ namespace FMGAPP.DAL.DAO
                     dto.MonthID = item.monthID;
                     dto.MonthName = item.monthName;
                     dto.Year = item.year;
+                    dto.ExpenditureDate = item.expenditureDate;
                     dto.ExpenditureTitleID = item.expenditureTitleID;
                     dto.ExpenditureTitle = item.expenditureTitle;
+                    dto.isExpenditureTitleDeleted = item.isDeleted;
                     expenditures.Add(dto);
                 }
                 return expenditures;
@@ -131,6 +172,8 @@ namespace FMGAPP.DAL.DAO
                                 year = e.year,
                                 expenditureTitleID = e.expenditureTitleID,
                                 expenditureTitle = et.expenditureTitle,
+                                expenditureDate = e.expenditureDate,
+                                isDeleted = e.isDeleted
                             }).OrderByDescending(x => x.year).ThenByDescending(x => x.monthID).ThenByDescending(x => x.day).ToList();
                 foreach (var item in list)
                 {
@@ -142,8 +185,10 @@ namespace FMGAPP.DAL.DAO
                     dto.MonthID = item.monthID;
                     dto.MonthName = item.monthName;
                     dto.Year = item.year;
+                    dto.ExpenditureDate = item.expenditureDate;
                     dto.ExpenditureTitleID = item.expenditureTitleID;
                     dto.ExpenditureTitle = item.expenditureTitle;
+                    dto.isExpenditureTitleDeleted = item.isDeleted;
                     expenditures.Add(dto);
                 }
                 return expenditures;
@@ -164,6 +209,7 @@ namespace FMGAPP.DAL.DAO
                 expenditure.day = entity.day;
                 expenditure.monthID = entity.monthID;
                 expenditure.year = entity.year;
+                expenditure.expenditureDate = entity.expenditureDate;
                 expenditure.expenditureTitleID = entity.expenditureTitleID;
                 db.SaveChanges();
                 return true;

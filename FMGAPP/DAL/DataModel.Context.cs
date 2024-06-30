@@ -13,10 +13,10 @@ namespace FMGAPP.DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FMGEntities1 : DbContext
+    public partial class FMGEntities : DbContext
     {
-        public FMGEntities1()
-            : base("name=FMGEntities1")
+        public FMGEntities()
+            : base("name=FMGEntities")
         {
         }
     
@@ -31,6 +31,7 @@ namespace FMGAPP.DAL
         public virtual DbSet<LOGIN> LOGINs { get; set; }
         public virtual DbSet<MONTH> MONTHs { get; set; }
         public virtual DbSet<OFFERING> OFFERINGs { get; set; }
+        public virtual DbSet<OFFERING_STATUS> OFFERING_STATUS { get; set; }
         public virtual DbSet<TEXT_DOCUMENT> TEXT_DOCUMENT { get; set; }
     }
 }

@@ -42,6 +42,7 @@ namespace FMGAPP.AllForms
         System.Windows.Forms.OpenFileDialog OpenFileDialog1 = new System.Windows.Forms.OpenFileDialog();
         private void btnBrowse_Click(object sender, EventArgs e)
         {
+            OpenFileDialog1.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.png)|*.jpg; *.jpeg; *.gif; *.png|All files(*.*)|*.*";
             if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 picImage.Load(OpenFileDialog1.FileName);
@@ -128,6 +129,16 @@ namespace FMGAPP.AllForms
 
         private void FormDocumentImage_Load(object sender, EventArgs e)
         {
+            labelTitleChildForm.Font = new Font("Segoe UI", 18, FontStyle.Bold);
+            txtDocumentName.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            txtSummary.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            txtImagePath.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            label1.Font = new Font("Segoe UI", 14, FontStyle.Regular);
+            label2.Font = new Font("Segoe UI", 14, FontStyle.Regular);
+            label3.Font = new Font("Segoe UI", 14, FontStyle.Regular);
+            btnBrowse.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+            btnClose.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+            btnSave.Font = new Font("Segoe UI", 14, FontStyle.Bold);
             if (isEdit)
             {
                 txtDocumentName.Text = detail.DocumentName;

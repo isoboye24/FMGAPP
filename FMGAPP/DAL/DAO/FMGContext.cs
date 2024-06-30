@@ -8,6 +8,6 @@ namespace FMGAPP.DAL.DAO
 {
     public class FMGContext
     {
-        public FMGEntities1 db = new FMGEntities1();
+        public FMGEntities db = new FMGEntities();
     }
 }

@@ -32,6 +32,15 @@ namespace FMGAPP.BLL
             return dao.GetBack(entity.ExpenditureTitleID);
         }
 
+        public decimal TotalExpensesThisMonth(int month)
+        {
+            return dao.TotalExpensesThisMonth(month);
+        }
+        public decimal TotalExpensesThisYear(int year)
+        {
+            return dao.TotalExpensesThisYear(year);
+        }
+
         public bool Insert(ExpenditureDetailDTO entity)
         {
             EXPENDITURE expenditure = new EXPENDITURE();
@@ -40,6 +49,7 @@ namespace FMGAPP.BLL
             expenditure.day = entity.Day;
             expenditure.monthID = entity.MonthID;
             expenditure.year = entity.Year;
+            expenditure.expenditureDate = entity.ExpenditureDate;
             expenditure.expenditureTitleID = entity.ExpenditureTitleID;
             return dao.Insert(expenditure);
         }
@@ -62,6 +72,7 @@ namespace FMGAPP.BLL
             expenditure.day = entity.Day;
             expenditure.monthID = entity.MonthID;
             expenditure.year = entity.Year;
+            expenditure.expenditureDate = entity.ExpenditureDate;
             expenditure.expenditureTitleID = entity.ExpenditureTitleID;
             return dao.Update(expenditure);
         }

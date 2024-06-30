@@ -30,15 +30,23 @@ namespace FMGAPP.AllForms
         ImageDocumentDTO imageDTO = new ImageDocumentDTO();
         OtherDocumentsBLL otherDocBLL = new OtherDocumentsBLL();
         OtherDocumentDTO otherDocDTO = new OtherDocumentDTO();
+        OfferingStatusBLL offeringStatusBLL = new OfferingStatusBLL();
+        OfferingStatusDTO offeringStatusDTO = new OfferingStatusDTO();
         DeletedDataBLL bll = new DeletedDataBLL();
         DeletedDataDTO dto = new DeletedDataDTO();
         private void FormDeletedData_Load(object sender, EventArgs e)
         {
+            cmbDeletedData.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            label1.Font = new Font("Segoe UI", 14, FontStyle.Regular);
+            btnDeletePermanently.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+            btnRetrieve.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+
             cmbDeletedData.Items.Add("Offerings");
             cmbDeletedData.Items.Add("Expenditure Titles");
             cmbDeletedData.Items.Add("Expenditures");
             cmbDeletedData.Items.Add("Image Documents");
             cmbDeletedData.Items.Add("Other Documents");
+            cmbDeletedData.Items.Add("Offering Status");
 
             dto = bll.Select(true);
             dataGridView1.DataSource = dto.Offerings;
@@ -53,6 +61,14 @@ namespace FMGAPP.AllForms
             dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[7].HeaderText = "Year";
             dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns[8].Visible = false;
+            dataGridView1.Columns[9].Visible = false;
+            dataGridView1.Columns[10].Visible = false;
+            dataGridView1.Columns[11].Visible = false;
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.HeaderCell.Style.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+            }
         }
 
         private void cmbDeletedData_SelectedIndexChanged(object sender, EventArgs e)
@@ -71,6 +87,10 @@ namespace FMGAPP.AllForms
                 dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 dataGridView1.Columns[7].HeaderText = "Year";
                 dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dataGridView1.Columns[8].Visible = false;
+                dataGridView1.Columns[9].Visible = false;
+                dataGridView1.Columns[10].Visible = false;
+                dataGridView1.Columns[11].Visible = false;
             }
             else if (cmbDeletedData.SelectedIndex == 1)
             {
@@ -95,6 +115,7 @@ namespace FMGAPP.AllForms
                 dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 dataGridView1.Columns[8].Visible = false;
                 dataGridView1.Columns[9].Visible = false;
+                dataGridView1.Columns[10].Visible = false;
             }
             else if (cmbDeletedData.SelectedIndex == 3)
             {
@@ -126,12 +147,19 @@ namespace FMGAPP.AllForms
                 dataGridView1.Columns[7].HeaderText = "Year";
                 dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
+            else if (cmbDeletedData.SelectedIndex == 5)
+            {
+                dataGridView1.DataSource = dto.OfferingStatuses;
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[1].HeaderText = "Offering Status";
+            }
         }
         OfferingsDetailDTO offeringDetail = new OfferingsDetailDTO();
         ExpenditureTitleDetailDTO expTitleDetail = new ExpenditureTitleDetailDTO();
         ExpenditureDetailDTO expDetail = new ExpenditureDetailDTO();
         ImageDocumentDetailDTO imageDocDetail = new ImageDocumentDetailDTO();
         OtherDocumentsDetailDTO otherDocDetail = new OtherDocumentsDetailDTO();
+        OfferingStatusDetailDTO offeringStatusDetail = new OfferingStatusDetailDTO();
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (cmbDeletedData.SelectedIndex == 0 || cmbDeletedData.SelectedIndex == -1)
@@ -145,6 +173,7 @@ namespace FMGAPP.AllForms
                 offeringDetail.MonthID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[5].Value);
                 offeringDetail.MonthName = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
                 offeringDetail.Year = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[7].Value);
+                offeringDetail.OfferingDate = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[8].Value);
             }
             else if (cmbDeletedData.SelectedIndex == 1)
             {
@@ -164,7 +193,8 @@ namespace FMGAPP.AllForms
                 expDetail.MonthName = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
                 expDetail.Year = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[7].Value);
                 expDetail.ExpenditureTitleID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[8].Value);
-                expDetail.isExpenditureTitleDeleted = Convert.ToBoolean(dataGridView1.Rows[e.RowIndex].Cells[9].Value);
+                expDetail.ExpenditureDate = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[9].Value);
+                expDetail.isExpenditureTitleDeleted = Convert.ToBoolean(dataGridView1.Rows[e.RowIndex].Cells[10].Value);
             }
             else if (cmbDeletedData.SelectedIndex == 3)
             {
@@ -189,6 +219,12 @@ namespace FMGAPP.AllForms
                 otherDocDetail.MonthID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[5].Value);
                 otherDocDetail.MonthName = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
                 otherDocDetail.Year = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[7].Value);
+            }
+            else if (cmbDeletedData.SelectedIndex == 5)
+            {
+                offeringStatusDetail = new OfferingStatusDetailDTO();
+                offeringStatusDetail.OfferingStatusID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                offeringStatusDetail.OfferingStatus = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
             }
             else
             {
@@ -298,6 +334,26 @@ namespace FMGAPP.AllForms
                             MessageBox.Show("Document was retrieved successfully");
                             dto = bll.Select(true);
                             dataGridView1.DataSource = dto.OtherDocuments;
+                        }
+                    }
+                }
+            }
+            else if (cmbDeletedData.SelectedIndex == 5)
+            {
+                if (offeringStatusDetail.OfferingStatusID == 0)
+                {
+                    MessageBox.Show("Please select offering status from the table.");
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Do you want to retrieve this data?", "Warning", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        if (offeringStatusBLL.GetBack(offeringStatusDetail))
+                        {
+                            MessageBox.Show("Offering Status was retrieved successfully");
+                            dto = bll.Select(true);
+                            dataGridView1.DataSource = dto.OfferingStatuses;
                         }
                     }
                 }
@@ -417,6 +473,30 @@ namespace FMGAPP.AllForms
                         }
                     }
                 }
+            }
+            else if (cmbDeletedData.SelectedIndex == 5)
+            {
+                if (offeringStatusDetail.OfferingStatusID == 0)
+                {
+                    MessageBox.Show("Please select offering status from the table.");
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Do you want to delete this data permanently?", "Warning", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        if (offeringStatusBLL.DeletePermanently(offeringStatusDetail))
+                        {
+                            MessageBox.Show("offering status was deleted successfully");
+                            dto = bll.Select(true);
+                            dataGridView1.DataSource = dto.OfferingStatuses;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("There is no data to delete");
             }
         }
     }

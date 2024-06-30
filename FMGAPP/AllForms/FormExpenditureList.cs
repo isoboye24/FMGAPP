@@ -67,6 +67,24 @@ namespace FMGAPP.AllForms
         ExpenditureDetailDTO detail = new ExpenditureDetailDTO();
         private void FormExpenditureList_Load(object sender, EventArgs e)
         {
+            txtAmount.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            cmbMonth.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            cmbExpenditureTitle.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            txtYear.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            label1.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            label2.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            label3.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            label4.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            rbEqual.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            rbLess.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            rbMore.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnAdd.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnClear.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnDelete.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnEdit.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnSearch.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnView.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+
             dto = bll.Select();
             cmbMonth.DataSource = dto.Months;
             General.ComboBoxProps(cmbMonth, "MonthName", "MonthID");
@@ -75,10 +93,11 @@ namespace FMGAPP.AllForms
 
             dataGridView1.DataSource = dto.Expenditures;
             dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].HeaderText = "Amount Spent";
+            dataGridView1.Columns[1].HeaderText = "Amt";
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridView1.Columns[2].HeaderText = "Expenditure Title";
-            dataGridView1.Columns[3].Visible = false;
+            dataGridView1.Columns[2].HeaderText = "Title";
+            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns[3].HeaderText = "Purpose";
             dataGridView1.Columns[4].HeaderText = "Day";
             dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[5].Visible = false;
@@ -88,6 +107,11 @@ namespace FMGAPP.AllForms
             dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[8].Visible = false;
             dataGridView1.Columns[9].Visible = false;
+            dataGridView1.Columns[10].Visible = false;
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.HeaderCell.Style.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+            }
         }
         public void ClearFilters()
         {
@@ -160,7 +184,8 @@ namespace FMGAPP.AllForms
             detail.MonthName = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
             detail.Year = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[7].Value);
             detail.ExpenditureTitleID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[8].Value);
-            detail.isExpenditureTitleDeleted = Convert.ToBoolean(dataGridView1.Rows[e.RowIndex].Cells[9].Value);
+            detail.ExpenditureDate = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[9].Value);
+            detail.isExpenditureTitleDeleted = Convert.ToBoolean(dataGridView1.Rows[e.RowIndex].Cells[10].Value);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
