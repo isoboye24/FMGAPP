@@ -49,7 +49,7 @@ namespace FMGAPP.AllForms
                     if (!isEditExpTitle)
                     {
                         ExpenditureTitleDetailDTO title = new ExpenditureTitleDetailDTO();
-                        title.ExpenditureTitle = txtSettingsText.Text;
+                        title.ExpenditureTitle = txtSettingsText.Text.Trim();
                         if (ExpTitleBLL.Insert(title))
                         {
                             MessageBox.Show("Expenditure title was added");
@@ -109,6 +109,10 @@ namespace FMGAPP.AllForms
                         }
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Unknown action");
             }
         }        
         private void FormExpenditureTitle_Load(object sender, EventArgs e)

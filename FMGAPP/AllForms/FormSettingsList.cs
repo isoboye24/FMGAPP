@@ -145,9 +145,9 @@ namespace FMGAPP.AllForms
         {
             FormAddSettings open = new FormAddSettings();
             this.Hide();
-            open.ShowDialog();
             open.titleString = "Add Expenditure Title";
             open.labelSettingsString = "Add Expenditure Title";
+            open.ShowDialog();
             this.Visible = true;
             FillDataGrid();
         }
